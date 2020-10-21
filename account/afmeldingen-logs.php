@@ -1,7 +1,7 @@
 <?php
-require('helpers/session.php');
-require_once('helpers/global_vars.php');
-require('helpers/check_admin.php');
+require('helpers/session');
+require_once('helpers/global_vars');
+require('helpers/check_admin');
 
 $sql = "SELECT event_bookings.bookings_id, event_bookings.bookings_status, event_bookings.event_id, events.week, events.event_date, events.category, users.firstname, users.lastname, event_bookings.updated_at FROM event_bookings INNER JOIN users ON event_bookings.user_id=users.id INNER JOIN events ON event_bookings.event_id=events.event_id WHERE event_bookings.created_at!=event_bookings.updated_at";
 
@@ -63,8 +63,8 @@ $result = $mysqli->query($sql);
         </div>
     </div>
     <!-- #END# Page Loader -->
-    <?php include 'components/navigation-top.php'; ?>
-    <?php include 'components/navigation-left-right.php'; ?>
+    <?php include 'components/navigation-top'; ?>
+    <?php include 'components/navigation-left-right'; ?>
 
     <section class="content">
         <div class="container-fluid">

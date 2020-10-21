@@ -1,6 +1,6 @@
 <?php
-require('helpers/session.php');
-require_once('helpers/global_vars.php');
+require('helpers/session');
+require_once('helpers/global_vars');
 ?>
 <!DOCTYPE html>
 <html lang="nl-NL">
@@ -54,8 +54,8 @@ require_once('helpers/global_vars.php');
         </div>
     </div>
     <!-- #END# Page Loader -->
-    <?php include 'components/navigation-top.php'; ?>
-    <?php include 'components/navigation-left-right.php'; ?>
+    <?php include 'components/navigation-top'; ?>
+    <?php include 'components/navigation-left-right'; ?>
 
     <section class="content">
         <div class="container-fluid">
@@ -88,7 +88,7 @@ require_once('helpers/global_vars.php');
                             <!-- Tab panes -->
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade in active" id="profiel">
-                                    <form action="helpers/edit_profile.php" method="post">
+                                    <form action="helpers/edit_profile" method="post">
                                         <input type='hidden' name='id' value='<?php echo $id; ?>'>
                                         <label for="email_address">Gebruikersnaam</label>
                                         <div class="form-group">
@@ -123,7 +123,7 @@ require_once('helpers/global_vars.php');
                                     </form>
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="wachtwoord-wijzigen">
-                                    <form action="change_password.php" method="post">
+                                    <form action="change_password" method="post">
                                         <input type='hidden' name='id' value='<?php echo $id; ?>'>
                                         <label for="password">Password</label>
                                         <div class="form-group">

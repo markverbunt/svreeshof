@@ -6,8 +6,8 @@
         <div class="btn-group user-helper-dropdown">
             <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
             <ul class="dropdown-menu pull-right">
-                <li><a href="/account/edit_profile.php"><i class="material-icons">person</i>Profiel wijzigen</a></li>
-                <li><a href="/account/logout.php"><i class="material-icons">input</i>Uitloggen</a></li>
+                <li><a href="/account/edit_profile"><i class="material-icons">person</i>Profiel wijzigen</a></li>
+                <li><a href="/account/logout"><i class="material-icons">input</i>Uitloggen</a></li>
             </ul>
         </div>
     </div>

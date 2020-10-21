@@ -1,7 +1,7 @@
 <?php
-	require_once('session.php');
+	require_once('session');
 
-	include_once('db.php');
+	include_once('db');
 	// Check connection
 	if ($mysqli->connect_error) {
 	  die("Connection failed: " . $mysqli->connect_error);

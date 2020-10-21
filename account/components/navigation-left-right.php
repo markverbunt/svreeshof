@@ -2,14 +2,14 @@
         <!-- Left Sidebar -->
         <aside id="leftsidebar" class="sidebar">
             <!-- User Info -->
-            <?php include 'components/profile-block.php'; ?>
+            <?php include 'components/profile-block'; ?>
             <!-- #User Info -->
             <!-- Menu -->
             <div class="menu">
                 <ul class="list">
                     <li class="header">MENU</li>
                     <li class="active">
-                        <a href="/account/dashboard.php">
+                        <a href="/account/dashboard">
                             <i class="material-icons">home</i>
                             <span>Dashboard</span>
                         </a>
@@ -21,17 +21,17 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="/account/events_training.php">Training</a>
+                                <a href="/account/events_training">Training</a>
                             </li>
                             <li>
-                                <a href="/account/events_wedstrijd.php">Wedstrijd</a>
+                                <a href="/account/events_wedstrijd">Wedstrijd</a>
                             </li>
                         </ul>
                     </li>
                     <?php if($is_admin) echo'
                     <li class="header">ADMINISTRATOR</li>
                     <li>
-                        <a href="/account/users.php">
+                        <a href="/account/users">
                             <i class="material-icons">person</i>
                             <span>Gebruikers</span>
                         </a>
@@ -43,15 +43,15 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="/account/add_event.php">Voeg wedstrijd / training toe</a>
+                                <a href="/account/add_event">Voeg wedstrijd / training toe</a>
                             </li>
                             <li>
-                                <a href="/account/list_events.php">Wijzig wedstrijd / training</a>
+                                <a href="/account/list_events">Wijzig wedstrijd / training</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="/account/afmeldingen-logs.php">
+                        <a href="/account/afmeldingen-logs">
                             <i class="material-icons">update</i>
                             <span>Afmeldingen logs</span>
                         </a>

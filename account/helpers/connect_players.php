@@ -1,5 +1,5 @@
 <?php
-include_once('db.php');
+include_once('db');
 
 $event_id = $_POST['event_id'];
 $bookings_status = $_POST['bookings_status'];
@@ -21,7 +21,7 @@ if ($result->num_rows > 0) {
 		$all_users = implode($values);
 		
 		if ($stmt = $mysqli->query("INSERT INTO event_bookings (user_id, event_id, bookings_status) VALUES ('$all_users', '$event_id', '$bookings_status' )")) {
-		header("location: /account/edit_event.php?event_id=$event_id&playersConnected");
+		header("location: /account/edit_event?event_id=$event_id&playersConnected");
 		}
 	}
 }

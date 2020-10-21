@@ -1,1 +1,1 @@
-<?php header("location: /account/dashboard.php");?>
+<?php header("location: /account/dashboard");?>

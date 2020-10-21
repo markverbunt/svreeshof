@@ -1,5 +1,5 @@
 <?php
-include_once('db.php');
+include_once('db');
 
 $bookings_id = $_POST['bookings_id'];
 $user_id = $_POST['user_id'];
@@ -16,7 +16,7 @@ if ($mysqli->connect_errno) {
 }
 
 if ($stmt = $mysqli->query("UPDATE event_bookings SET user_id='$user_id', event_id='$event_id', bookings_status='$bookings_status' WHERE bookings_id='$bookings_id'")) {
-    header("location: /account/event.php?event_id=$event_id");
+    header("location: /account/event?event_id=$event_id");
 }
 mysqli_stmt_close($stmt);
 $mysqli->close();

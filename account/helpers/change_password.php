@@ -1,5 +1,5 @@
 <?php
-include_once('db.php');
+include_once('db');
 
 ini_set('display_errors', 'On');
 ini_set('display_startup_errors', 'On');

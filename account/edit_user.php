@@ -1,7 +1,7 @@
 <?php
-require('helpers/session.php');
-require_once('helpers/global_vars.php');
-require('helpers/check_admin.php');
+require('helpers/session');
+require_once('helpers/global_vars');
+require('helpers/check_admin');
 
 $id=$_GET['id'];
 $sql2 = "SELECT * FROM users WHERE id='$id' LIMIT 1";
@@ -83,8 +83,8 @@ $mysqli->close();
         </div>
     </div>
     <!-- #END# Page Loader -->
-    <?php include 'components/navigation-top.php'; ?>
-    <?php include 'components/navigation-left-right.php'; ?>
+    <?php include 'components/navigation-top'; ?>
+    <?php include 'components/navigation-left-right'; ?>
 
     <section class="content">
         <div class="container-fluid">
@@ -100,7 +100,7 @@ $mysqli->close();
                             </h2>
                         </div>
                         <div class="body">
-                            <form action="helpers/modify_user.php" method="post">
+                            <form action="helpers/modify_user" method="post">
                                 <input type='hidden' name='id' value="<?php echo $id; ?>">
                                 <div class="row clearfix">
                                     <div class="col-md-3">

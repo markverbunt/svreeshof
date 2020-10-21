@@ -17,7 +17,7 @@
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="/account/dashboard.php">Sv Reeshof - Bierteam</a>
+                <a class="navbar-brand" href="/account/dashboard">Sv Reeshof - Bierteam</a>
             </div>
             <div class="collapse navbar-collapse hidden" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right hidden">
