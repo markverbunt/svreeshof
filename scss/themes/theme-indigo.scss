@@ -1,0 +1,92 @@
+﻿@import '_theme-color-variables';
+
+.theme-svreeshof {
+
+    .navbar {
+        background-color: $theme-svreeshof;
+    }
+
+    .navbar-brand {
+        color: $theme-svreeshof-navbar-brand;
+
+        &:hover {
+            color: $theme-svreeshof-navbar-brand_hover;
+        }
+
+        &:active {
+            color: $theme-svreeshof-navbar-brand_active;
+        }
+
+        &:focus {
+            color: $theme-svreeshof-navbar-brand_focus;
+        }
+    }
+
+    .nav {
+        > li {
+            > a {
+                color: $theme-svreeshof-nav-anchor;
+
+                &:hover {
+                    background-color: $theme-svreeshof-nav-anchor_hover;
+                }
+
+                &:focus {
+                    background-color: $theme-svreeshof-nav-anchor_focus;
+                }
+            }
+        }
+
+        .open {
+            > a {
+                background-color: $theme-svreeshof-nav-anchor-opened;
+
+                &:hover {
+                    background-color: $theme-svreeshof-nav-anchor-opened_hover;
+                }
+
+                &:focus {
+                    background-color: $theme-svreeshof-nav-anchor-opened_focus;
+                }
+            }
+        }
+    }
+
+    .bars {
+        color: $theme-svreeshof-bar;
+    }
+
+    .sidebar {
+        .menu {
+            .list {
+                li.active {
+                    background-color: $theme-svreeshof-menu-list-active;
+
+                    > :first-child {
+                        i, span {
+                            color: $theme-svreeshof;
+                        }
+                    }
+                }
+
+                .toggled {
+                    background-color: $theme-svreeshof-menu-list-toggled;
+                }
+
+                .ml-menu {
+                    background-color: $theme-svreeshof-menu-list-submenu;
+                }
+            }
+        }
+
+        .legal {
+            background-color: $theme-svreeshof-legal-bg;
+
+            .copyright {
+                a {
+                    color: $theme-svreeshof !important;
+                }
+            }
+        }
+    }
+}
