@@ -1,6 +1,6 @@
 <?php
-require('helpers/session');
-require_once('helpers/global_vars');
+require('helpers/session.php');
+require_once('helpers/global_vars.php');
 ?>
 <!DOCTYPE html>
 <html lang="nl-NL">
@@ -54,8 +54,8 @@ require_once('helpers/global_vars');
         </div>
     </div>
     <!-- #END# Page Loader -->
-    <?php include 'components/navigation-top'; ?>
-    <?php include 'components/navigation-left-right'; ?>
+    <?php include 'components/navigation-top.php'; ?>
+    <?php include 'components/navigation-left-right.php'; ?>
     <section class="content">
         <div class="container-fluid">
             <div class="block-header">

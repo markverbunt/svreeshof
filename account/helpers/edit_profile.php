@@ -1,5 +1,5 @@
 <?php
-include_once('db');
+include_once('db.php');
 
 $username = $_POST['username'];
 $firstname = $_POST['firstname'];
@@ -16,7 +16,7 @@ if ($mysqli->connect_errno) {
 }
 
 if ($stmt = $mysqli->query("UPDATE users SET username='$username', firstname='$firstname', lastname='$lastname', email='$email' WHERE id='$id'")) {
-    header("location: /account/dashboard");
+    header("location: /account/dashboard.php");
 }
 mysqli_stmt_close($stmt);
 $mysqli->close();

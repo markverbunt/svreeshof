@@ -1,6 +1,6 @@
 <?php
-require('helpers/session');
-require_once('helpers/global_vars');
+require('helpers/session.php');
+require_once('helpers/global_vars.php');
 
 $event_id=$_GET['event_id'];
 //$sql = "SELECT * FROM events WHERE event_id='$event_id' LIMIT 1";
@@ -11,7 +11,7 @@ if ($result->num_rows > 0) {
   // output data of each row
   $row = $result->fetch_assoc();
 } else {
-  header("location: /account/list_events?noPlayersFound&event_id=$event_id");
+  header("location: /account/list_events.php?noPlayersFound&event_id=$event_id");
 }
 $category = $row['category'];
 $week = $row['week'];
@@ -96,8 +96,8 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$eve
         </div>
     </div>
     <!-- #END# Page Loader -->
-    <?php include 'components/navigation-top'; ?>
-    <?php include 'components/navigation-left-right'; ?>
+    <?php include 'components/navigation-top.php'; ?>
+    <?php include 'components/navigation-left-right.php'; ?>
 
     <section class="content" id="show-event">
         <div class="container-fluid">
@@ -116,14 +116,14 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$eve
                                         <i class="material-icons">more_vert</i>
                                     </a>
                                     <ul class="dropdown-menu pull-right">
-                                        <li><a href="/account/edit_event?event_id=' . $event_id . '">Bewerken</a></li>
+                                        <li><a href="/account/edit_event.php?event_id=' . $event_id . '">Bewerken</a></li>
                                     </ul>
                                 </li>
                             </ul>'; ?>
                         </div>
                         <div class="body">
                             <div class="pull-right">
-                                <form action="helpers/modify_bookings" method="post">
+                                <form action="helpers/modify_bookings.php" method="post">
                                     <input type='hidden' name='user_id' value="<?php echo $id; ?>">
                                     <input type='hidden' name='event_id' value="<?php echo $event_id; ?>">
                                     <input type='hidden' name='bookings_id' value="<?php echo $bookings_id; ?>">

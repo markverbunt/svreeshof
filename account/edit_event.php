@@ -1,7 +1,7 @@
 <?php
-require('helpers/session');
-require_once('helpers/global_vars');
-require('helpers/check_admin');
+require('helpers/session.php');
+require_once('helpers/global_vars.php');
+require('helpers/check_admin.php');
 
 $event_id=$_GET['event_id'];
 $sql2 = "SELECT * FROM events WHERE event_id='$event_id' LIMIT 1";
@@ -11,7 +11,7 @@ if ($result->num_rows > 0) {
   // output data of each row
   $row = $result->fetch_assoc();
 } else {
-  header("location: /account/list_events?noEventsFound");
+  header("location: /account/list_events.php?noEventsFound");
 }
 $category = $row['category'];
 $week = $row['week'];
@@ -91,8 +91,8 @@ $mysqli->close();
         </div>
     </div>
     <!-- #END# Page Loader -->
-    <?php include 'components/navigation-top'; ?>
-    <?php include 'components/navigation-left-right'; ?>
+    <?php include 'components/navigation-top.php'; ?>
+    <?php include 'components/navigation-left-right.php'; ?>
 
     <section class="content" id="edit-event">
         <div class="container-fluid">
@@ -125,7 +125,7 @@ $mysqli->close();
                             <!-- Tab panes -->
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade in active" id="wijzigen">
-                                    <form action="helpers/modify_event" method="post">
+                                    <form action="helpers/modify_event.php" method="post">
                                         <input type='hidden' name='event_id' value="<?php echo $event_id; ?>">
                                         <div class="row clearfix">
                                             <div class="col-md-2">
@@ -230,7 +230,7 @@ $mysqli->close();
                                     <?php
                                     if($total=="0") {
                                         echo "<p>Er zijn nog geen spelers gekoppeld. Dit betekent dat de spelers zich niet kunnen aan/afmelden. Klik op onderstaande knop om spelers te koppelen.</p>
-                                    <form action='helpers/connect_players' method='post'>
+                                    <form action='helpers/connect_players.php' method='post'>
                                         <input type='hidden' name='event_id' value='$event_id'>";
                                         if($category=="wedstrijd") echo "<input type='hidden' name='bookings_status' value='1'>";
                                         if($category=="training") echo "<input type='hidden' name='bookings_status' value='0'>";

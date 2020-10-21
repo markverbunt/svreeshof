@@ -1,6 +1,6 @@
 <?php
-require('helpers/session');
-require_once('helpers/global_vars');
+require('helpers/session.php');
+require_once('helpers/global_vars.php');
 
 $sql = "SELECT * FROM event_bookings INNER JOIN events ON events.event_id=event_bookings.event_id WHERE event_bookings.user_id='$id' AND events.category='training'";
 
@@ -62,8 +62,8 @@ $result = $mysqli->query($sql);
         </div>
     </div>
     <!-- #END# Page Loader -->
-    <?php include 'components/navigation-top'; ?>
-    <?php include 'components/navigation-left-right'; ?>
+    <?php include 'components/navigation-top.php'; ?>
+    <?php include 'components/navigation-left-right.php'; ?>
 
     <section class="content">
         <div class="container-fluid">
@@ -109,8 +109,8 @@ $result = $mysqli->query($sql);
                                             else if($event_status=="1") echo "<td><span class='label bg-green'>ACTIEF</soan></td>";
                                             if($bookings_status=="0") echo "<td><span class='label bg-red'>NEE</span></td>";
                                             else if($bookings_status=="1") echo "<td><span class='label bg-green'>JA</span></td>";
-                                            echo "<td><a href='/account/event?event_id=$event_id'><i class='material-icons'>visibility</i></a>";
-                                            echo "<td><form method=post action=helpers/modify_bookings>
+                                            echo "<td><a href='/account/event.php?event_id=$event_id'><i class='material-icons'>visibility</i></a>";
+                                            echo "<td><form method=post action=helpers/modify_bookings.php>
                                             <input type='hidden' name='user_id' value='$id'>
                                             <input type='hidden' name='event_id' value='$event_id'>
                                             <input type='hidden' name='bookings_id' value='$bookings_id'>";

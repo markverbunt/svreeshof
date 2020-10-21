@@ -1,5 +1,5 @@
 <?php
-include_once('db');
+include_once('db.php');
 
 $event_id = $_POST['event_id'];
 $week = $_POST['week'];
@@ -19,7 +19,7 @@ if ($mysqli->connect_errno) {
 }
 
 if ($stmt = $mysqli->query("UPDATE events SET week='$week', event_date='$event_date', category='$category', info='$info', event_status='$event_status', gameinfo='$gameinfo', location='$location' WHERE event_id='$event_id'")) {
-    header("location: /account/list_events?eventSuccessUpdated&event_category=$category");
+    header("location: /account/list_events.php?eventSuccessUpdated&event_category=$category");
 }
 mysqli_stmt_close($stmt);
 $mysqli->close();

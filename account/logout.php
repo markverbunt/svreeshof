@@ -11,6 +11,6 @@ session_destroy();
 unset($_SESSION['username']); 
  
 // Redirect to login page
-header("location: /account/dashboard");
+header("location: /account/dashboard.php");
 exit;
 ?>

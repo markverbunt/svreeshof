@@ -1,6 +1,6 @@
 <?php
-require('helpers/session');
-require_once('helpers/global_vars');
+require('helpers/session.php');
+require_once('helpers/global_vars.php');
 
 foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings INNER JOIN events ON events.event_id=event_bookings.event_id WHERE bookings_status='1' AND user_id='$id' AND category='wedstrijd'") as $totalcount_wedstrijden) {
     $count_wedstrijden  = "". $totalcount_wedstrijden['COUNT(*)'] ."";
@@ -71,8 +71,8 @@ $result = $mysqli->query($sql);
         </div>
     </div>
     <!-- #END# Page Loader -->
-    <?php include 'components/navigation-top'; ?>
-    <?php include 'components/navigation-left-right'; ?>
+    <?php include 'components/navigation-top.php'; ?>
+    <?php include 'components/navigation-left-right.php'; ?>
     <section class="content">
         <div class="container-fluid">
             <div class="block-header">
@@ -140,8 +140,8 @@ $result = $mysqli->query($sql);
                                         <i class="material-icons">more_vert</i>
                                     </a>
                                     <ul class="dropdown-menu pull-right">
-                                        <li><a href="/account/events_wedstrijd">Alle wedstrijden</a></li>
-                                        <li><a href="/account/events_training">Alle trainingen</a></li>
+                                        <li><a href="/account/events_wedstrijd.php">Alle wedstrijden</a></li>
+                                        <li><a href="/account/events_training.php">Alle trainingen</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -177,7 +177,7 @@ $result = $mysqli->query($sql);
                                                     echo "<td>$gameinfo</td>";
                                                     if($bookings_status=="0") echo "<td><span class='label bg-red'>NEE</span></td>";
                                                     else if($bookings_status=="1") echo "<td><span class='label bg-green'>JA</span></td>";
-                                                    echo "<td><a href='/account/event?event_id=$event_id'><i class='material-icons'>visibility</i></a>";
+                                                    echo "<td><a href='/account/event.php?event_id=$event_id'><i class='material-icons'>visibility</i></a>";
                                                 echo "</tr>";
                                                 }
                                             } else {}                                   

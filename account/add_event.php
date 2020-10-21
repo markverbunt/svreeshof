@@ -1,7 +1,7 @@
 <?php
-require('helpers/session');
-require_once('helpers/global_vars');
-require('helpers/check_admin');
+require('helpers/session.php');
+require_once('helpers/global_vars.php');
+require('helpers/check_admin.php');
 
 $mysqli->close();
 ?>
@@ -78,9 +78,9 @@ $mysqli->close();
     </div>
     <!-- #END# Search Bar -->
     <!-- Top Bar -->
-    <?php include 'components/navigation-top'; ?>
+    <?php include 'components/navigation-top.php'; ?>
     <!-- #Top Bar -->
-    <?php include 'components/navigation-left-right'; ?>
+    <?php include 'components/navigation-left-right.php'; ?>
 
     <section class="content">
         <div class="container-fluid">
@@ -95,7 +95,7 @@ $mysqli->close();
                             </h2>
                         </div>
                         <div class="body">
-                            <form action="helpers/create_event" method="post">
+                            <form action="helpers/create_event.php" method="post">
                                 <div class="row clearfix">
                                     <div class="col-md-2">
                                         <b>Week *</b>

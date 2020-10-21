@@ -1,5 +1,5 @@
 <?php
-include_once('db');
+include_once('db.php');
 
 $week = $_POST['week'];
 $event_date = $_POST['event_date'];
@@ -29,12 +29,12 @@ if ($stmt = $mysqli->query("INSERT INTO events (week, event_date, category, info
 					$all_users = implode($values);
 					
 					if ($stmt = $mysqli->query("INSERT INTO event_bookings (user_id, event_id, bookings_status) VALUES ('$all_users', '$last_id', '1' )")) {
-					header("location: /account/event?event_id=$last_id");
+					header("location: /account/event.php?event_id=$last_id");
 					}
 				}
 			}*/
 
-    		header("location: /account/list_events?eventSuccess");
+    		header("location: /account/list_events.php?eventSuccess");
 		}
 $mysqli->close();
 ?>

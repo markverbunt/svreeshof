@@ -1,7 +1,7 @@
 <?php
-require('helpers/session');
-require_once('helpers/global_vars');
-require('helpers/check_admin');
+require('helpers/session.php');
+require_once('helpers/global_vars.php');
+require('helpers/check_admin.php');
 
 $sql = "SELECT * FROM events";
 $result = $mysqli->query($sql);
@@ -67,8 +67,8 @@ $event_category=$_GET['event_category'];
         </div>
     </div>
     <!-- #END# Page Loader -->
-    <?php include 'components/navigation-top'; ?>
-    <?php include 'components/navigation-left-right'; ?>
+    <?php include 'components/navigation-top.php'; ?>
+    <?php include 'components/navigation-left-right.php'; ?>
 
     <section class="content">
         <div class="container-fluid">
@@ -87,7 +87,7 @@ $event_category=$_GET['event_category'];
                                         <i class="material-icons">more_vert</i>
                                     </a>
                                     <ul class="dropdown-menu pull-right">
-                                        <li><a href="/account/add_event">Voeg een wedstrijd / training toe</a></li>
+                                        <li><a href="/account/add_event.php">Voeg een wedstrijd / training toe</a></li>
                                     </ul>
                                 </li>
                             </ul>'; ?>
@@ -123,7 +123,7 @@ $event_category=$_GET['event_category'];
                                             echo "<td>$gameinfo</td>";
                                             if($event_status=="0") echo "<td><span class='label bg-red'>AFGELAST</span></td>";
                                             else if($event_status=="1") echo "<td><span class='label bg-green'>ACTIEF</span></td>";
-                                            echo "<td><a href='/account/event?event_id=$event_id'><i class='material-icons'>visibility</i></a> &nbsp; <a href='/account/edit_event?event_id=$event_id'><i class='material-icons'>create</i></a></td>";
+                                            echo "<td><a href='/account/event.php?event_id=$event_id'><i class='material-icons'>visibility</i></a> &nbsp; <a href='/account/edit_event.php?event_id=$event_id'><i class='material-icons'>create</i></a></td>";
                                         echo "</tr>";
                                     }
                                 } else {
@@ -202,7 +202,7 @@ $event_category=$_GET['event_category'];
             confirmButtonText: "Ja maak ze aan",
             closeOnConfirm: false
         }, function () {
-            window.location.href = '/account/edit_event?event_id=<?php echo $error_event; ?>';
+            window.location.href = '/account/edit_event.php?event_id=<?php echo $error_event; ?>';
         });
     }
     

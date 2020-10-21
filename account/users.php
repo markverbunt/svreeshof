@@ -1,7 +1,7 @@
 <?php
-require('helpers/session');
-require_once('helpers/global_vars');
-require('helpers/check_admin');
+require('helpers/session.php');
+require_once('helpers/global_vars.php');
+require('helpers/check_admin.php');
 
 $sql = "SELECT * FROM users";
 $result = $mysqli->query($sql);
@@ -62,8 +62,8 @@ $result = $mysqli->query($sql);
     </div>
     <!-- #END# Page Loader -->
 
-    <?php include 'components/navigation-top'; ?>
-    <?php include 'components/navigation-left-right'; ?>
+    <?php include 'components/navigation-top.php'; ?>
+    <?php include 'components/navigation-left-right.php'; ?>
 
     <section class="content">
         <div class="container-fluid">
@@ -113,7 +113,7 @@ $result = $mysqli->query($sql);
                                             else if($role=="1") echo "<td>Beheerder</td>";
                                             if($user_status=="0") echo "<td><span class='label bg-red'>INACTIEF</span></td>";
                                             else if($user_status=="1") echo "<td><span class='label bg-green'>ACTIEF</span></td>";
-                                            echo "<td><a href='/account/edit_user?id=$id'><i class='material-icons'>create</i></a></td>";
+                                            echo "<td><a href='/account/edit_user.php?id=$id'><i class='material-icons'>create</i></a></td>";
                                         echo "</tr>";
                                     }
                                 } else {
