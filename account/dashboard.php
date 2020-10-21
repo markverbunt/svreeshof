@@ -164,7 +164,8 @@ $result = $mysqli->query($sql);
                                         if ($result->num_rows > 0) {
                                             while ($row = $result->fetch_assoc()) {
                                                 $event_id = $row['event_id'];
-                                                $event_date = $row['event_date'];
+                                                $orgDate = $row['event_date'];
+                                                $event_date = date("d-m-Y", strtotime($orgDate));
                                                 $category = $row['category'];
                                                 $gameinfo = $row['gameinfo'];
                                                 $event_status = $row['event_status'];
