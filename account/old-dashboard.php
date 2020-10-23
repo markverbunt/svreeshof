@@ -283,7 +283,7 @@ require_once('helpers/global_vars.php');
                                             <td>John Doe</td>
                                             <td>
                                                 <div class="progress">
-                                                    <div class="progress-bar bg-green" role="progressbar" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100" style="width: 62%"></div>
+                                                    <div class="progress-bar bg-green" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="50" style="width: 62%"></div>
                                                 </div>
                                             </td>
                                         </tr>

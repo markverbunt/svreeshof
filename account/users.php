@@ -107,7 +107,7 @@ $result = $mysqli->query($sql);
                                             echo "<td>$firstname</td>";
                                             echo "<td>$lastname</td>";
                                             echo "<td>$username</td>";
-                                            echo "<td>$email</td>";
+                                            echo "<td><a href='mailto:$email'>$email</a></td>";
                                             echo "<td>&euro; $finance</td>";
                                             if($role=="0") echo "<td>Gebruiker</td>";
                                             else if($role=="1") echo "<td>Beheerder</td>";
@@ -117,7 +117,7 @@ $result = $mysqli->query($sql);
                                         echo "</tr>";
                                     }
                                 } else {
-                                  echo "Geen event gevonden";
+                                  echo "Geen gebruikers gevonden";
                                 }                                   
                                     $mysqli->close();
                                     ?>

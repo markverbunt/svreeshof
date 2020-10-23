@@ -127,8 +127,16 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$eve
                                     <input type='hidden' name='user_id' value="<?php echo $id; ?>">
                                     <input type='hidden' name='event_id' value="<?php echo $event_id; ?>">
                                     <input type='hidden' name='bookings_id' value="<?php echo $bookings_id; ?>">
-                                    <?php if($bookings_status=="1" && $event_status=="1") echo "<input type='hidden' name='bookings_status' value='0'><button class='btn btn-danger waves-effect' type='submit' name='cancel'><i class='material-icons'>close</i><span>Ik wil me afmelden</span></button>";
-                                    else if($bookings_status=="0"  && $event_status=="1") echo "<input type='hidden' name='bookings_status' value='1'><button class='btn btn-success waves-effect' type='submit' name='aanmelden'><i class='material-icons'>check</i><span>Ik wil me toch weer aanmelden</span></button>";?>
+                                    <?php
+                                        if($category=="wedstrijd" && strtotime($event_date) > strtotime('now')) {
+                                            if($bookings_status=="1" && $event_status=="1") echo "<input type='hidden' name='bookings_status' value='0'><button class='btn btn-danger waves-effect' type='submit' name='cancel'><i class='material-icons'>close</i><span>Ik wil me afmelden</span></button>";
+                                            else if($bookings_status=="0"  && $event_status=="1") echo "<input type='hidden' name='bookings_status' value='1'><button class='btn btn-success waves-effect' type='submit' name='aanmelden'><i class='material-icons'>check</i><span>Ik wil me toch weer aanmelden</span></button>";
+                                        }
+                                        else if($category=="training" && strtotime($event_date) > strtotime('now-1day')) {
+                                            if($bookings_status=="1" && $event_status=="1") echo "<input type='hidden' name='bookings_status' value='0'><button class='btn btn-danger waves-effect' type='submit' name='cancel'><i class='material-icons'>close</i><span>Ik wil me afmelden</span></button>";
+                                            else if($bookings_status=="0"  && $event_status=="1") echo "<input type='hidden' name='bookings_status' value='1'><button class='btn btn-success waves-effect' type='submit' name='aanmelden'><i class='material-icons'>check</i><span>Ik wil me toch weer aanmelden</span></button>";
+                                        }
+                                    ?>
                                 </form>
                             </div>
                             <!-- Nav tabs -->

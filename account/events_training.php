@@ -114,8 +114,10 @@ $result = $mysqli->query($sql);
                                             <input type='hidden' name='user_id' value='$id'>
                                             <input type='hidden' name='event_id' value='$event_id'>
                                             <input type='hidden' name='bookings_id' value='$bookings_id'>";
-                                            if($bookings_status=="1" && $event_status=="1") echo "<input type='hidden' name='bookings_status' value='0'><button class='btn btn-danger waves-effect' type='submit' name='cancel'><i class='material-icons'>close</i><span>Afmelden</span></button>";
-                                            else if($bookings_status=="0"  && $event_status=="1") echo "<input type='hidden' name='bookings_status' value='1'><button class='btn btn-success waves-effect' type='submit' name='aanmelden'><i class='material-icons'>check</i><span>Aanmelden</span></button>";
+                                            if(strtotime($event_date) > strtotime('now-1day')) {
+                                                if($bookings_status=="1" && $event_status=="1") echo "<input type='hidden' name='bookings_status' value='0'><button class='btn btn-danger waves-effect' type='submit' name='cancel'><i class='material-icons'>close</i><span>Afmelden</span></button>";
+                                                else if($bookings_status=="0"  && $event_status=="1") echo "<input type='hidden' name='bookings_status' value='1'><button class='btn btn-success waves-effect' type='submit' name='aanmelden'><i class='material-icons'>check</i><span>Aanmelden</span></button>";
+                                            }
                                             echo "</form>
                                             </td>";
                                         echo "</tr>";

@@ -1,7 +1,7 @@
 <div class="user-info">
     <div class="info-container">
         <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo ''. $firstname . ' ' . $lastname . '' ; ?></div>
-        <div class="email"><?php echo $email; ?></div>
+        <div class="email"><a style="color: #fff;" href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a></div>
         <div class="email">Openstaand bedrag: &euro;<?php echo $finance; ?></div>
         <div class="btn-group user-helper-dropdown">
             <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>

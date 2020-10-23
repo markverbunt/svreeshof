@@ -51,6 +51,12 @@
                         </ul>
                     </li>
                     <li>
+                        <a href="/account/finance.php">
+                            <i class="material-icons">euro</i>
+                            <span>Financieel</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="/account/afmeldingen-logs.php">
                             <i class="material-icons">update</i>
                             <span>Afmeldingen logs</span>
