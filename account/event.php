@@ -204,7 +204,7 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$eve
                                         <thead>
                                             <tr>
                                                 <th>Naam</th>
-                                                <th>Aanwezig</th>
+                                                <th>Aanwezig <?php if($category=="wedstrijd" && strtotime($event_date) < strtotime('now')) {echo "geweest";} else if($category=="training" && strtotime($event_date) < strtotime('now-1day')) {echo "geweest";}?></th>
                                             </tr>
                                         </thead>
                                         <tbody>
