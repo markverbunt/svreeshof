@@ -12,18 +12,17 @@ require '../../vendor/autoload.php';
 //Create a new PHPMailer instance
 $mail = new PHPMailer();
 //Set who the message is to be sent from
-$mail->setFrom('m_verbunt@hotmail.com', 'Mark');
+$mail->setFrom('info@svreeshof-bierteam.nl', 'SV Reeshof Bierteam');
 //Set an alternative reply-to address
-$mail->addReplyTo('m_verbunt@hotmail.com', 'Mark');
+$mail->addReplyTo('info@svreeshof-bierteam.nl', 'SV Reeshof Bierteam');
 //Set who the message is to be sent to
-$mail->addAddress('m_verbunt@hotmail.com', 'Mark');
+$mail->addAddress('m_verbunt@hotmail.com');
 //Set the subject line
-$mail->Subject = 'PHPMailer mail() test';
+$mail->Subject = 'Event aangemaakt';
 //Read an HTML message body from an external file, convert referenced images to embedded,
 //convert HTML into a basic plain-text alternative body
-//$mail->msgHTML(file_get_contents('contents.html'), __DIR__);
+$mail->msgHTML(file_get_contents('contents.html'), __DIR__);
 //Replace the plain text body with one created manually
-$mail->Body = 'This is a plain-text message body';
 $mail->AltBody = 'This is a plain-text message body';
 
 //send the message, check for errors
