@@ -34,7 +34,7 @@ $headers[] = 'Content-type: text/html; charset=iso-8859-1';
 
 // Additional headers
 $headers[] = 'To: Mark <m_verbunt@hotmail.com>, Mark <m_verbunt@hotmail.com>';
-$headers[] = 'From: Birthday Reminder <info@svreeshof-bierteam.nl/>';
+$headers[] = 'From: Mark <info@svreeshof-bierteam.nl>';
 $headers[] = 'Cc: m_verbunt@hotmail.com';
 $headers[] = 'Bcc: m_verbunt@hotmail.com';
 

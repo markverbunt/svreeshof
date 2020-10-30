@@ -111,6 +111,12 @@ foreach($mysqli->query("SELECT SUM(finance) FROM users") as $TotalPaidFinance) {
                                                     </div>
                                                 </td>";
                                                 }
+                                                else if($finance=="0") {echo "
+                                                <td><div class='progress'>
+                                                        <div class='progress-bar bg-green' role='progressbar' aria-valuenow='$finance' aria-valuemin='0' aria-valuemax='50' style='width: 100%'>&euro; $finance</div>
+                                                    </div>
+                                                </td>";
+                                                }
                                                 else {echo"
                                                 <td><div class='progress'>
                                                         <div class='progress-bar bg-green' role='progressbar' aria-valuenow='$finance' aria-valuemin='0' aria-valuemax='50' style='width: $financeBar%'>&euro; $finance</div>
