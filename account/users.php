@@ -86,6 +86,7 @@ $result = $mysqli->query($sql);
                                         <th>Gebruikersnaam</th>
                                         <th>Email</th>
                                         <th>Openstaand bedrag</th>
+                                        <th>Email updates</th>
                                         <th>Rol</th>
                                         <th>Status</th>
                                         <th></th>
@@ -102,6 +103,7 @@ $result = $mysqli->query($sql);
                                         $email = $row['email'];
                                         $role = $row['role'];
                                         $finance = $row['finance'];
+                                        $email_updates = $row['email_updates'];
                                         $user_status = $row['user_status'];
                                         echo "<tr>";
                                             echo "<td>$firstname</td>";
@@ -109,6 +111,8 @@ $result = $mysqli->query($sql);
                                             echo "<td>$username</td>";
                                             echo "<td><a href='mailto:$email'>$email</a></td>";
                                             echo "<td>&euro; $finance</td>";
+                                            if($email_updates=="0") echo "<td><span class='label bg-red'>UIT</span></td>";
+                                            else if($email_updates=="1") echo "<td><span class='label bg-green'>AAN</span></td>";
                                             if($role=="0") echo "<td>Gebruiker</td>";
                                             else if($role=="1") echo "<td>Beheerder</td>";
                                             if($user_status=="0") echo "<td><span class='label bg-red'>INACTIEF</span></td>";

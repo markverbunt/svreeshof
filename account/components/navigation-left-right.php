@@ -78,7 +78,7 @@
                     &copy; 2020 Sv reeshof 7.
                 </div>
                 <div class="version">
-                    <b>Version: </b> 1.0
+                    <b>Version: </b> 1.5
                 </div>
             </div>
             <!-- #Footer -->

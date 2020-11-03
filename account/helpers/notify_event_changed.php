@@ -22,8 +22,6 @@ $event_id = $_POST['event_id'];
 
 include_once('db.php');
 
-//$result = mysqli_query($mysqli, 'SELECT firstname, email, lastname FROM test_users WHERE email_updates = FALSE AND role = 1');
-
 $result = mysqli_query($mysqli, "SELECT event_bookings.bookings_id, event_bookings.bookings_status, event_bookings.event_id, event_bookings.user_id, users.firstname, users.lastname, users.email, event_bookings.updated_at, events.category, events.week, events.event_date, events.info, events.gameinfo, events.location, events.event_status, events.modified_at FROM event_bookings INNER JOIN users ON event_bookings.user_id=users.id INNER JOIN events ON event_bookings.event_id=events.event_id WHERE event_bookings.event_id='$event_id' AND email_updates = TRUE");
 
 foreach ($result as $row) {

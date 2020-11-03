@@ -84,34 +84,37 @@ require_once('helpers/global_vars.php');
                                     </a>
                                 </li>
                             </ul>
-
                             <!-- Tab panes -->
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade in active" id="profiel">
                                     <form action="helpers/edit_profile.php" method="post">
                                         <input type='hidden' name='id' value='<?php echo $id; ?>'>
-                                        <label for="email_address">Gebruikersnaam</label>
+                                        <label for="email_updates">Email updates ontvangen</label>
+                                        <div class="switch">
+                                            <label>UIT<input type="checkbox" value="1" name="email_updates" <?php if($email_updates=="1") echo "checked"; ?>><span class="lever switch-col-cyan"></span>AAN</label>
+                                        </div>
+                                        <label for="username">Gebruikersnaam</label>
                                         <div class="form-group">
                                             <div class="form-line">
                                                 <input type="text" name="username" class="form-control" placeholder="Gebruikersnaam" value="<?php echo $username; ?>">
                                                 <span class="help-block"><?php echo $username_err; ?></span>
                                             </div>
                                         </div>
-                                        <label for="email_address">Voornaam</label>
+                                        <label for="firstname">Voornaam</label>
                                         <div class="form-group">
                                             <div class="form-line">
                                                 <input type="text" name="firstname" class="form-control" placeholder="Voornaam" value="<?php echo $firstname; ?>">
                                                 <span class="help-block"><?php echo $firstname_err; ?></span>
                                             </div>
                                         </div>
-                                        <label for="email_address">Achternaam</label>
+                                        <label for="lastname">Achternaam</label>
                                         <div class="form-group">
                                             <div class="form-line">
                                                 <input type="text" name="lastname" class="form-control" placeholder="Achternaam" value="<?php echo $lastname; ?>">
                                                 <span class="help-block"><?php echo $lastname_err; ?></span>
                                             </div>
                                         </div>
-                                       <label for="email_address">Email</label>
+                                       <label for="email">Email</label>
                                         <div class="form-group">
                                             <div class="form-line">
                                                 <input type="email" name="email"class="form-control" placeholder="Email" value="<?php echo $email; ?>">
@@ -132,7 +135,7 @@ require_once('helpers/global_vars.php');
                                                 <span class="help-block"><?php echo $password_err; ?></span>
                                             </div>
                                         </div>
-                                        <label for="password">Password</label>
+                                        <label for="confirm_password">Password</label>
                                         <div class="form-group">
                                             <div class="form-line">
                                                 <input type="password" name="confirm_password" class="form-control" minlength="6" placeholder="Herhaal Wachtwoord" value="<?php echo $confirm_password; ?>">
