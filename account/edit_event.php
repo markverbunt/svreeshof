@@ -229,7 +229,7 @@ $mysqli->close();
                                 <div role="tabpanel" class="tab-pane fade" id="instellingen">
                                     <?php
                                     if($total=="0") {
-                                        echo "<p>Er zijn nog geen spelers gekoppeld. Dit betekent dat de spelers zich niet kunnen aan/afmelden. Klik op onderstaande knop om spelers te koppelen.</p>
+                                        echo "<h4>Koppel spelers</h4><p>Er zijn nog geen spelers gekoppeld. Dit betekent dat de spelers zich niet kunnen aan/afmelden. Klik op onderstaande knop om spelers te koppelen.</p>
                                     <form action='helpers/connect_players.php' method='post'>
                                         <input type='hidden' name='event_id' value='$event_id'>";
                                         if($category=="wedstrijd") echo "<input type='hidden' name='bookings_status' value='1'>";
@@ -238,9 +238,15 @@ $mysqli->close();
                                     </form>";
                                     }
                                     else {
-                                        echo "Aantal gekoppelde spelers:" . $total;
+                                        echo "<h4>Gekoppelde spelers</h4><p>Aantal gekoppelde spelers: " . $total ."</p>";
                                     }
                                     ?>
+                                    <hr>
+                                    <h4>Stuur wijzigingen per mail</h4>
+                                    <form action='helpers/notify_event_changed.php' method='post'>
+                                        <input type='hidden' name='event_id' value='<?php echo $event_id; ?>'>
+                                        <input type='submit' class='btn btn-primary m-t-15 waves-effect' value='Stuur wijzigingen per mail'>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -301,10 +307,21 @@ $mysqli->close();
             showConfirmButton: false,
         });
     }
+    function EmailUpdateSend() {
+        swal({
+            title: "Email update verzonden",
+            text: "Alle emails zijn succesvol verzonden naar de juiste spelers",
+            type: "success",
+            timer: 4000,
+            showConfirmButton: false,
+        });
+    }
 </script>
 <?php
 if(isset($_GET['playersConnected'])){
     echo '<script>playersConnected();</script>';}
+if(isset($_GET['EmailUpdateSend'])){
+    echo '<script>EmailUpdateSend();</script>';}
 ?>
 </body>
 

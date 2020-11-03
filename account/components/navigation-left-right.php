@@ -62,6 +62,12 @@
                             <span>Afmeldingen logs</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="/account/email-logs.php">
+                            <i class="material-icons">update</i>
+                            <span>Email logs</span>
+                        </a>
+                    </li>
                 '; ?>
                 </ul>
             </div>
