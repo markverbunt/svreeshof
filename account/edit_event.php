@@ -22,6 +22,7 @@ $info = $row['info'];
 $gameinfo = $row['gameinfo'];
 $location = $row['location'];
 $event_status = $row['event_status'];
+$email_send = $row['email_send'];
 
 foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$event_id'") as $totals) {
     $total  = "". $totals['COUNT(*)'] ."";
@@ -242,11 +243,22 @@ $mysqli->close();
                                     }
                                     ?>
                                     <hr>
-                                    <h4>Stuur wijzigingen per mail</h4>
-                                    <form action='helpers/notify_event_changed.php' method='post'>
-                                        <input type='hidden' name='event_id' value='<?php echo $event_id; ?>'>
-                                        <input type='submit' class='btn btn-primary m-t-15 waves-effect' value='Stuur wijzigingen per mail'>
-                                    </form>
+                                    <?php
+                                        if($email_send=="0") {
+                                            echo"<h4>Stuur email notificatie</h4>
+                                            <form action='helpers/notify_event_created.php' method='post'>
+                                                <input type='hidden' name='event_id' value='$event_id'>
+                                                <input type='submit' class='btn btn-primary m-t-15 waves-effect' value='Stuur email notificatie'>
+                                            </form>";
+                                        }
+                                        else {
+                                            echo"<h4>Stuur wijzigingen per mail</h4>
+                                            <form action='helpers/notify_event_changed.php' method='post'>
+                                                <input type='hidden' name='event_id' value='$event_id'>
+                                                <input type='submit' class='btn btn-primary m-t-15 waves-effect' value='Stuur wijzigingen per mail'>
+                                            </form>";
+                                        }
+                                    ?>
                                 </div>
                             </div>
                         </div>
@@ -301,7 +313,7 @@ $mysqli->close();
     function playersConnected() {
         swal({
             title: "Spelers succesvol gekoppeld",
-            text: "Controleer aub op de tab instellingen",
+            text: "Controleer aub op de tab instellingen en verzend eventueel een email notificatie",
             type: "success",
             timer: 4000,
             showConfirmButton: false,

@@ -22,11 +22,11 @@ $event_id = $_POST['event_id'];
 
 include_once('db.php');
 
-$result = mysqli_query($mysqli, "SELECT event_bookings.bookings_id, event_bookings.bookings_status, event_bookings.event_id, event_bookings.user_id, users.firstname, users.lastname, users.email, event_bookings.updated_at, events.category, events.week, events.event_date, events.info, events.gameinfo, events.location, events.event_status, events.modified_at FROM event_bookings INNER JOIN users ON event_bookings.user_id=users.id INNER JOIN events ON event_bookings.event_id=events.event_id WHERE event_bookings.event_id='$event_id' AND email_updates = TRUE");
+$result = mysqli_query($mysqli, "SELECT event_bookings.bookings_id, event_bookings.bookings_status, event_bookings.event_id, event_bookings.user_id, users.firstname, users.lastname, users.email, event_bookings.updated_at, events.category, events.week, events.event_date, events.info, events.gameinfo, events.location, events.event_status, events.created_at FROM event_bookings INNER JOIN users ON event_bookings.user_id=users.id INNER JOIN events ON event_bookings.event_id=events.event_id WHERE event_bookings.event_id='$event_id' AND email_updates = TRUE");
 
 foreach ($result as $row) {
-  $body = file_get_contents('mails/event_changed.html');
-  $type = 'wijziging';
+  $body = file_get_contents('mails/event_created.html');
+  $type = 'aangemaakt';
   $user_id = $row['user_id'];
   $event_id = $row['event_id'];
   $bookings_id = $row['bookings_id'];
@@ -41,11 +41,11 @@ foreach ($result as $row) {
   $orgDate = $row['event_date'];
   $event_date = date("d-m-Y", strtotime($orgDate));
   $Rawevent_status = $row['event_status'];
-  $orgDateTime = $row['modified_at'];
-  $modified_at = date("d-m-Y H:i:s", strtotime($orgDateTime));
+  $orgDateTime = $row['created_at'];
+  $created_at = date("d-m-Y H:i:s", strtotime($orgDateTime));
   $Rawbookings_status = $row['bookings_status'];
 
-  $mail->Subject = 'Wjziging voor de ' . $category . ' van week '  .$week . ' - ' . $event_date;
+  $mail->Subject = . $category . ' toegevoegd voor week '  .$week . ' - ' . $event_date;
 
   if($Rawevent_status=="0") {
     $event_status = 'Afgelast';
@@ -73,7 +73,7 @@ foreach ($result as $row) {
         $body = str_replace('%location%', $location, $body);
         $body = str_replace('%event_date%', $event_date, $body);
         $body = str_replace('%event_id%', $event_id, $body);
-        $body = str_replace('%modified_at%', $modified_at, $body);
+        $body = str_replace('%created_at%', $created_at, $body);
         $body = str_replace('%event_status%', $event_status, $body);
         $body = str_replace('%bookings_status%', $bookings_status, $body);
     } catch (Exception $e) {
@@ -97,6 +97,10 @@ foreach ($result as $row) {
         mysqli_query(
             $mysqli,
             "INSERT INTO email_logs (user_id, event_id, bookings_id, type) VALUES ('$user_id', '$event_id', '$bookings_id', '$type' )"
+        );
+        mysqli_query(
+            $mysqli,
+            "UPDATE events SET email_send = TRUE WHERE event_id = $event_id"
         );
     } catch (Exception $e) {
         echo 'Mailer Error (' . htmlspecialchars($email) . ') ' . $mail->ErrorInfo . '<br>';

@@ -229,7 +229,7 @@ $event_category=$_GET['event_category'];
     function eventSuccessUpdated() {
         swal({
             title: "<?php echo $event_category; ?>",
-            text: "Is succesvol geupdate!",
+            text: "Is succesvol geupdate! Verstuurd eventueel een email notificate van de wijziging",
             type: "success",
             timer: 4000,
             showConfirmButton: false,
