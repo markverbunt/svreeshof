@@ -149,6 +149,45 @@ $mysqli->close();
                                                     </span>
                                                     <select class="form-control show-tick" name="week" required>
                                                         <!--<option value="">-- Selecteer --</option>-->
+                                                        <option value="1" <?php if($week=="1") echo "selected"; ?>>1</option>
+                                                        <option value="2" <?php if($week=="2") echo "selected"; ?>>2</option>
+                                                        <option value="3" <?php if($week=="3") echo "selected"; ?>>3</option>
+                                                        <option value="4" <?php if($week=="4") echo "selected"; ?>>4</option>
+                                                        <option value="5" <?php if($week=="5") echo "selected"; ?>>5</option>
+                                                        <option value="6" <?php if($week=="6") echo "selected"; ?>>6</option>
+                                                        <option value="7" <?php if($week=="7") echo "selected"; ?>>7</option>
+                                                        <option value="8" <?php if($week=="8") echo "selected"; ?>>8</option>
+                                                        <option value="9" <?php if($week=="9") echo "selected"; ?>>9</option>
+                                                        <option value="10" <?php if($week=="10") echo "selected"; ?>>10</option>
+                                                        <option value="11" <?php if($week=="11") echo "selected"; ?>>11</option>
+                                                        <option value="12" <?php if($week=="12") echo "selected"; ?>>12</option>
+                                                        <option value="13" <?php if($week=="13") echo "selected"; ?>>13</option>
+                                                        <option value="14" <?php if($week=="14") echo "selected"; ?>>14</option>
+                                                        <option value="15" <?php if($week=="15") echo "selected"; ?>>15</option>
+                                                        <option value="16" <?php if($week=="16") echo "selected"; ?>>16</option>
+                                                        <option value="17" <?php if($week=="17") echo "selected"; ?>>17</option>
+                                                        <option value="18" <?php if($week=="18") echo "selected"; ?>>18</option>
+                                                        <option value="19" <?php if($week=="19") echo "selected"; ?>>19</option>
+                                                        <option value="20" <?php if($week=="20") echo "selected"; ?>>20</option>
+                                                        <option value="21" <?php if($week=="21") echo "selected"; ?>>21</option>
+                                                        <option value="22" <?php if($week=="22") echo "selected"; ?>>22</option>
+                                                        <option value="23" <?php if($week=="23") echo "selected"; ?>>23</option>
+                                                        <option value="24" <?php if($week=="24") echo "selected"; ?>>24</option>
+                                                        <option value="25" <?php if($week=="25") echo "selected"; ?>>25</option>
+                                                        <option value="26" <?php if($week=="26") echo "selected"; ?>>26</option>
+                                                        <option value="27" <?php if($week=="27") echo "selected"; ?>>27</option>
+                                                        <option value="28" <?php if($week=="28") echo "selected"; ?>>28</option>
+                                                        <option value="29" <?php if($week=="29") echo "selected"; ?>>29</option>
+                                                        <option value="30" <?php if($week=="30") echo "selected"; ?>>30</option>
+                                                        <option value="31" <?php if($week=="31") echo "selected"; ?>>31</option>
+                                                        <option value="32" <?php if($week=="32") echo "selected"; ?>>32</option>
+                                                        <option value="33" <?php if($week=="33") echo "selected"; ?>>33</option>
+                                                        <option value="34" <?php if($week=="34") echo "selected"; ?>>34</option>
+                                                        <option value="35" <?php if($week=="35") echo "selected"; ?>>35</option>
+                                                        <option value="36" <?php if($week=="36") echo "selected"; ?>>36</option>
+                                                        <option value="37" <?php if($week=="37") echo "selected"; ?>>37</option>
+                                                        <option value="38" <?php if($week=="38") echo "selected"; ?>>38</option>
+                                                        <option value="39" <?php if($week=="39") echo "selected"; ?>>39</option>
                                                         <option value="40" <?php if($week=="40") echo "selected"; ?>>40</option>
                                                         <option value="41" <?php if($week=="41") echo "selected"; ?>>41</option>
                                                         <option value="42" <?php if($week=="42") echo "selected"; ?>>42</option>
