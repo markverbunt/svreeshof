@@ -8045,6 +8045,14 @@ table.event-table tr.afgelast, table.dashboard-task-infos tr.afgelast  {
 background: #ff9e9e;
 }
 
+table.event-table tr.noplayer, table.dashboard-task-infos tr.noplayer  {
+background: #ffef9e;
+}
+
+table.event-table tr.noplayer .label.bg-yellow, table.dashboard-task-infos tr.noplayer .label.bg-yellow {
+color: #000 !important;
+}
+
 #show-event .card .header strong, #edit-event .card .header strong {
   text-transform: uppercase;
 }

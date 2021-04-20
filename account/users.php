@@ -87,6 +87,7 @@ $result = $mysqli->query($sql);
                                         <th>Email</th>
                                         <th>Openstaand bedrag</th>
                                         <th>Email updates</th>
+                                        <th>Type</th>
                                         <th>Rol</th>
                                         <th>Status</th>
                                         <th></th>
@@ -101,6 +102,7 @@ $result = $mysqli->query($sql);
                                         $firstname = $row['firstname'];
                                         $lastname = $row['lastname'];
                                         $email = $row['email'];
+                                        $player_type = $row['player_type'];
                                         $role = $row['role'];
                                         $finance = $row['finance'];
                                         $email_updates = $row['email_updates'];
@@ -113,6 +115,8 @@ $result = $mysqli->query($sql);
                                             echo "<td>&euro; $finance</td>";
                                             if($email_updates=="0") echo "<td><span class='label bg-red'>UIT</span></td>";
                                             else if($email_updates=="1") echo "<td><span class='label bg-green'>AAN</span></td>";
+                                            if($player_type=="0") echo "<td>Speler</td>";
+                                            else if($player_type=="1") echo "<td>Rustend lid</td>";
                                             if($role=="0") echo "<td>Gebruiker</td>";
                                             else if($role=="1") echo "<td>Beheerder</td>";
                                             if($user_status=="0") echo "<td><span class='label bg-red'>INACTIEF</span></td>";

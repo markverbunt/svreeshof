@@ -30,6 +30,7 @@ $confirm_password = $row['password'];
 $user_status = $row['user_status'];
 $finance = $row['finance'];
 $role = $row['role'];
+$player_type = $row['player_type'];
 $email_updates = $row['email_updates'];
 if($role=='1') $is_admin = true;
 ?>

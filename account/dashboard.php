@@ -10,7 +10,7 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings INNER JOIN events ON
     $count_trainingen  = "". $totalcount_trainingen['COUNT(*)'] ."";
 }
 
-foreach($mysqli->query("SELECT COUNT(*) FROM users WHERE user_status='1'") as $totalcount_users) {
+foreach($mysqli->query("SELECT COUNT(*) FROM users WHERE user_status='1' AND player_type='0'") as $totalcount_users) {
     $count_users  = "". $totalcount_users['COUNT(*)'] ."";
 }
 
@@ -120,7 +120,7 @@ $result = $mysqli->query($sql);
                             <i class="material-icons">person</i>
                         </div>
                         <div class="content">
-                            <div class="text">AANTAL ACTIEVE LEDEN</div>
+                            <div class="text">AANTAL SPELENDE LEDEN</div>
                             <div class="number count-to" data-from="0" data-to="<?php echo $count_users;?>" data-speed="1000" data-fresh-interval="20"></div>
                         </div>
                     </div>

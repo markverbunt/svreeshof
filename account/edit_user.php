@@ -21,6 +21,7 @@ $email = $row['email'];
 $role = $row['role'];
 $finance = $row['finance'];
 $user_status = $row['user_status'];
+$player_type = $row['player_type'];
 
 $mysqli->close();
 
@@ -128,14 +129,15 @@ $mysqli->close();
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <b>Gebruikersnaam *</b>
+                                        <b>Type *</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
-                                                <i class="material-icons">person</i>
+                                                <i class="material-icons">subject</i>
                                             </span>
-                                            <div class="form-line">
-                                                <input type="text" name="username" class="form-control" placeholder="Gebruikersnaam" value="<?php echo $username; ?>" required>
-                                            </div>
+                                            <select class="form-control show-tick" name="player_type" required>
+                                                <option value="0" <?php if($player_type=="0") echo "selected"; ?>>Speler</option>
+                                                <option value="1" <?php if($player_type=="1") echo "selected"; ?>>Rustend lid</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -151,7 +153,18 @@ $mysqli->close();
                                     </div>
                                 </div>
                                 <div class="row clearfix">
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
+                                        <b>Gebruikersnaam *</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">person</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="username" class="form-control" placeholder="Gebruikersnaam" value="<?php echo $username; ?>" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
                                         <b>Voornaam *</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
@@ -162,7 +175,7 @@ $mysqli->close();
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <b>Achternaam *</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
@@ -173,7 +186,7 @@ $mysqli->close();
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <b>Email *</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">

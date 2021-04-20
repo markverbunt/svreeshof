@@ -25,7 +25,7 @@ $event_status = $row['event_status'];
 $bookings_id = $row['bookings_id'];
 $bookings_status = $row['bookings_status'];
 
-$sql2 = "SELECT event_bookings.bookings_id, event_bookings.bookings_status, event_bookings.event_id, users.firstname, users.lastname, event_bookings.updated_at FROM event_bookings INNER JOIN users ON event_bookings.user_id=users.id INNER JOIN events ON event_bookings.event_id=events.event_id WHERE event_bookings.event_id='$event_id' ORDER BY FIELD(event_bookings.bookings_status, '0', '1')";
+$sql2 = "SELECT event_bookings.bookings_id, event_bookings.bookings_status, event_bookings.event_id, users.firstname, users.lastname, users.player_type, event_bookings.updated_at FROM event_bookings INNER JOIN users ON event_bookings.user_id=users.id INNER JOIN events ON event_bookings.event_id=events.event_id WHERE event_bookings.event_id='$event_id' ORDER BY FIELD(event_bookings.bookings_status, '0', '1')";
 
 $result2 = $mysqli->query($sql2);
 
@@ -213,12 +213,15 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$eve
                                             while ($row = $result2->fetch_assoc()) {
                                                 $firstname = $row['firstname'];
                                                 $lastname = $row['lastname'];
+                                                $player_type = $row['player_type'];
                                                 $bookings_status = $row['bookings_status'];
-                                                if($bookings_status=="0") echo "<tr class='afgelast'>";
+                                                if($player_type=="1") echo "<tr class='noplayer'>";
+                                                else if($bookings_status=="0") echo "<tr class='afgelast'>";
                                                 else if($bookings_status=="1") echo "<tr class=''>";
                                                     echo "<td>$firstname $lastname</td>";
-                                                    if($bookings_status=="0") echo "<td><span class='label bg-red'>NEE</span></td>";
-                                                    else if($bookings_status=="1") echo "<td><span class='label bg-green'>JA</span></td>";
+                                                    if($player_type=="1") echo "<td><span class='label bg-yellow'>RUSTEND LID</span></td>";
+                                                    if($bookings_status=="0" && $player_type=="0") echo "<td><span class='label bg-red'>NEE</span></td>";
+                                                    else if($bookings_status=="1" && $player_type=="0") echo "<td><span class='label bg-green'>JA</span></td>";
                                                 echo "</tr>";
                                             }
                                         } else {
