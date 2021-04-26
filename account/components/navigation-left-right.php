@@ -33,8 +33,22 @@
                     <li>
                         <a href="/account/users.php">
                             <i class="material-icons">person</i>
-                            <span>Gebruikers</span>
+                            <span>Alle gebruikers</span>
                         </a>
+                    </li>
+                     <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">person</i>
+                            <span>Gebruikers overzicht</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="/account/users_play.php">Spelers</a>
+                            </li>
+                            <li>
+                                <a href="/account/users_rest.php">Rustende leden</a>
+                            </li>
+                        </ul>
                     </li>
                      <li>
                         <a href="javascript:void(0);" class="menu-toggle">

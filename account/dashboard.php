@@ -10,14 +10,21 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings INNER JOIN events ON
     $count_trainingen  = "". $totalcount_trainingen['COUNT(*)'] ."";
 }
 
-foreach($mysqli->query("SELECT COUNT(*) FROM users WHERE user_status='1' AND player_type='0'") as $totalcount_users) {
-    $count_users  = "". $totalcount_users['COUNT(*)'] ."";
+foreach($mysqli->query("SELECT COUNT(*) FROM users WHERE user_status='1' AND player_type='0'") as $totalcount_users_play) {
+    $count_users_play  = "". $totalcount_users_play['COUNT(*)'] ."";
+}
+
+foreach($mysqli->query("SELECT COUNT(*) FROM users WHERE user_status='1' AND player_type='1'") as $totalcount_users_rest) {
+    $count_users_rest  = "". $totalcount_users_rest['COUNT(*)'] ."";
 }
 
 $sql = "SELECT * FROM event_bookings INNER JOIN events ON events.event_id=event_bookings.event_id WHERE event_bookings.user_id='$id' AND events.event_date >= CURDATE() ORDER BY events.event_date ASC LIMIT 2";
 
 $result = $mysqli->query($sql);
 
+foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$lasteventid' AND bookings_status='0'") as $totafmeldingen) {
+    $afmeldingen  = "". $totafmeldingen['COUNT(*)'] ."";
+}
 ?>
 <!DOCTYPE html>
 <html lang="nl-NL">
@@ -80,8 +87,53 @@ $result = $mysqli->query($sql);
             </div>
 
             <!-- Widgets -->
+            <?php if($is_admin) echo '
             <div class="row clearfix">
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <a href="/account/event.php?event_id=' . $lasteventid . '" style="cursor: pointer; text-decoration: none;">
+                        <div class="info-box bg-orange hover-expand-effect">
+                            <div class="icon">
+                                <i class="material-icons">person</i>
+                            </div>
+                            <div class="content">
+                                <div class="text">AFMELDINGEN DEZE WEEK</div>
+                                <div class="number count-to" data-from="0" data-to="' . $afmeldingen . '" data-speed="1000" data-fresh-interval="20">
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <a href="/account/users_play.php" style="cursor: pointer; text-decoration: none;">
+                        <div class="info-box bg-orange hover-expand-effect">
+                            <div class="icon">
+                                <i class="material-icons">person</i>
+                            </div>
+                            <div class="content">
+                                <div class="text">AANTAL SPELERS</div>
+                                <div class="number count-to" data-from="0" data-to="' . $count_users_play . '" data-speed="1000" data-fresh-interval="20">
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <a href="/account/users_rest.php" style="cursor: pointer; text-decoration: none;">
+                        <div class="info-box bg-orange hover-expand-effect">
+                            <div class="icon">
+                                <i class="material-icons">person</i>
+                            </div>
+                            <div class="content">
+                                <div class="text">AANTAL RUSTENDE LEDEN</div>
+                                <div class="number count-to" data-from="0" data-to="' . $count_users_rest . '" data-speed="1000" data-fresh-interval="20">
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>';?>
+            <div class="row clearfix">
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                     <div class="info-box bg-pink hover-expand-effect">
                         <div class="icon">
                             <i class="material-icons">euro</i>
@@ -92,38 +144,31 @@ $result = $mysqli->query($sql);
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box bg-cyan hover-expand-effect">
-                        <div class="icon">
-                            <i class="material-icons">sports_soccer</i>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <a href="/account/events_wedstrijd.php" style="cursor: pointer; text-decoration: none;">
+                        <div class="info-box bg-cyan hover-expand-effect">
+                            <div class="icon">
+                                <i class="material-icons">sports_soccer</i>
+                            </div>
+                            <div class="content">
+                                <div class="text">GESPEELDE WEDSTRIJDEN</div>
+                                <div class="number count-to" data-from="0" data-to="<?php echo $count_wedstrijden;?>" data-speed="1000" data-fresh-interval="20"></div>
+                            </div>
                         </div>
-                        <div class="content">
-                            <div class="text">AANWEZIG BIJ WEDSTRIJDEN</div>
-                            <div class="number count-to" data-from="0" data-to="<?php echo $count_wedstrijden;?>" data-speed="1000" data-fresh-interval="20"></div>
-                        </div>
-                    </div>
+                    </a>
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box bg-light-green hover-expand-effect">
-                        <div class="icon">
-                            <i class="material-icons">sports_soccer</i>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <a href="/account/events_training.php" style="cursor: pointer; text-decoration: none;">
+                        <div class="info-box bg-light-green hover-expand-effect">
+                            <div class="icon">
+                                <i class="material-icons">sports_soccer</i>
+                            </div>
+                            <div class="content">
+                                <div class="text">DEELNAME TRAININGEN</div>
+                                <div class="number count-to" data-from="0" data-to="<?php echo $count_trainingen;?>" data-speed="1000" data-fresh-interval="20"></div>
+                            </div>
                         </div>
-                        <div class="content">
-                            <div class="text">AANWEZIG BIJ TRAININGEN</div>
-                            <div class="number count-to" data-from="0" data-to="<?php echo $count_trainingen;?>" data-speed="1000" data-fresh-interval="20"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="info-box bg-orange hover-expand-effect">
-                        <div class="icon">
-                            <i class="material-icons">person</i>
-                        </div>
-                        <div class="content">
-                            <div class="text">AANTAL SPELENDE LEDEN</div>
-                            <div class="number count-to" data-from="0" data-to="<?php echo $count_users;?>" data-speed="1000" data-fresh-interval="20"></div>
-                        </div>
-                    </div>
+                    </a>
                 </div>
             </div>
             <!-- #END# Widgets -->   

@@ -18,6 +18,16 @@
 	  echo "Geen gebruiker gevonden";
 	}
 
+	$sql2 = "SELECT * FROM events ORDER BY event_id DESC LIMIT 1 ";
+	$result2 = $mysqli->query($sql2);
+
+	if ($result2->num_rows > 0) {
+	  // output data of each row
+	  $row2 = $result2->fetch_assoc();
+	} else {
+	  echo "Geen event gevonden";
+	}
+
 
 // Global vars# //
 $id = $row['id'];
@@ -33,4 +43,5 @@ $role = $row['role'];
 $player_type = $row['player_type'];
 $email_updates = $row['email_updates'];
 if($role=='1') $is_admin = true;
+$lasteventid = $row2['event_id'];
 ?>
