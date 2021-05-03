@@ -285,7 +285,7 @@ $mysqli->close();
                                     <?php
                                         if($email_send=="0") {
                                             echo"<h4>Stuur email notificatie</h4>
-                                            <form action='helpers/notify_event_created.php' method='post'>
+                                            <form action='helpers/notify_event_new.php' method='post'>
                                                 <input type='hidden' name='event_id' value='$event_id'>
                                                 <input type='submit' class='btn btn-primary m-t-15 waves-effect' value='Stuur email notificatie'>
                                             </form>";
