@@ -89,10 +89,10 @@
             <!-- Footer -->
             <div class="legal">
                 <div class="copyright">
-                    &copy; 2020 Sv reeshof 7.
+                    &copy; 2021 Sv reeshof 7.
                 </div>
                 <div class="version">
-                    <b>Version: </b> 1.5
+                    <b>Version: </b> 1.7
                 </div>
             </div>
             <!-- #Footer -->
