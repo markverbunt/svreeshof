@@ -247,6 +247,7 @@ if(isset($_GET['eventSuccessUpdated'])){
     echo '<script>eventSuccessUpdated();</script>';}
 ?>
 
+
 </body>
 
 </html>

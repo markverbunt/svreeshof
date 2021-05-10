@@ -53,6 +53,9 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$las
     <!-- Morris Chart Css-->
     <link href="/plugins/morrisjs/morris.css" rel="stylesheet" />
 
+    <!-- Sweetalert Css -->
+    <link href="/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+
     <!-- Custom Css -->
     <link href="/css/style.css" rel="stylesheet">
 
@@ -288,12 +291,35 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$las
     <!-- Sparkline Chart Plugin Js -->
     <script src="/plugins/jquery-sparkline/jquery.sparkline.js"></script>
 
+    <!-- SweetAlert Plugin Js -->
+    <script src="/plugins/sweetalert/sweetalert.min.js"></script>
+
     <!-- Custom Js -->
     <script src="/js/admin.js"></script>
     <script src="/js/pages/index.js"></script>
 
     <!-- Demo Js -->
     <script src="/js/demo.js"></script>
+
+    <script>
+        function financeNotification() {
+        swal({
+            title: "Er staat nog een bedrag open!",
+            text: "Volgens onze administratie staat er nog <?php echo $finance; ?> open?",
+            type: "warning",
+            showCancelButton: false,
+            confirmButtonColor: "#4CAF50",
+            cancelButtonText: "Nee nu niet",
+            confirmButtonText: "Ik ga nu betalen",
+            closeOnConfirm: true
+        });
+        }
+    </script>
+    <?php
+        if($finance>"0") {
+    echo '<script>financeNotification();</script>';}
+
+    ?>
 </body>
 
 </html>
