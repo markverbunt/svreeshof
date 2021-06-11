@@ -305,7 +305,7 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$las
         function financeNotification() {
         swal({
             title: "Er staat nog een bedrag open!",
-            text: "Volgens onze administratie staat er nog <?php echo $finance; ?> open?",
+            text: "Volgens onze administratie staat er nog € <?php echo $finance; ?> open?",
             type: "warning",
             showCancelButton: false,
             confirmButtonColor: "#4CAF50",
@@ -316,7 +316,7 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$las
         }
     </script>
     <?php
-        if($finance>"0") {
+        if($finance_popup_true && $finance>=$finance_threshold_amounts && !$finance==0) {
     echo '<script>financeNotification();</script>';}
 
     ?>

@@ -112,13 +112,19 @@ $result = $mysqli->query($sql);
                                             if($bookings_status=="0") echo "<td><span class='label bg-red'>NEE</span></td>";
                                             else if($bookings_status=="1") echo "<td><span class='label bg-green'>JA</span></td>";
                                             echo "<td><a href='/account/event.php?event_id=$event_id'><i class='material-icons'>visibility</i></a>";
-                                            echo "<td><form method=post action=helpers/modify_bookings.php>
+                                            echo "<td>
+                                            <form method=post action=helpers/modify_bookings.php>
                                             <input type='hidden' name='user_id' value='$id'>
                                             <input type='hidden' name='event_id' value='$event_id'>
                                             <input type='hidden' name='bookings_id' value='$bookings_id'>";
                                             if(strtotime($event_date) > strtotime('now')) {
-                                                if($bookings_status=="1" && $event_status=="1") echo "<input type='hidden' name='bookings_status' value='0'><button class='btn btn-danger waves-effect' type='submit' name='cancel'><i class='material-icons'>close</i><span>Afmelden</span></button>";
-                                                else if($bookings_status=="0"  && $event_status=="1") echo "<input type='hidden' name='bookings_status' value='1'><button class='btn btn-success waves-effect' type='submit' name='aanmelden'><i class='material-icons'>check</i><span>Aanmelden</span></button>";
+                                                if(!$booking_block) {
+                                                    if($bookings_status=="1" && $event_status=="1") echo "<input type='hidden' name='bookings_status' value='0'><button class='btn btn-danger waves-effect' type='submit' name='cancel'><i class='material-icons'>close</i><span>Afmelden</span></button>";
+                                                    else if($bookings_status=="0" && $event_status=="1") echo "<input type='hidden' name='bookings_status' value='1'><button class='btn btn-success waves-effect' type='submit' name='aanmelden'><i class='material-icons'>check</i><span>Aanmelden</span></button>";
+                                                }
+                                                else {
+                                                echo "<span class='label bg-red'>Aan/afmelden niet mogelijk door betalingsachterstand</span>";
+                                                }
                                             }
                                             echo "</form>
                                             </td>";

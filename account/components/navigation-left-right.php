@@ -71,6 +71,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="/account/settings.php">
+                            <i class="material-icons">settings</i>
+                            <span>Instellingen</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="/account/afmeldingen-logs.php">
                             <i class="material-icons">update</i>
                             <span>Afmeldingen logs</span>
@@ -92,7 +98,7 @@
                     &copy; 2021 Sv reeshof 7.
                 </div>
                 <div class="version">
-                    <b>Version: </b> 1.7
+                    <b>Version: </b> 1.8 - Laatste update 08-06-21
                 </div>
             </div>
             <!-- #Footer -->

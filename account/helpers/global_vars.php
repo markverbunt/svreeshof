@@ -28,8 +28,18 @@
 	  echo "Geen event gevonden";
 	}
 
+	$sql3 = "SELECT * FROM settings";
+	$result3 = $mysqli->query($sql3);
+
+	if ($result3->num_rows > 0) {
+	  // output data of each row
+	  $row3 = $result3->fetch_assoc();
+	} else {
+	  echo "Geen settings gevonden";
+	}
 
 // Global vars# //
+// USERS# //
 $id = $row['id'];
 $username = $row['username'];
 $firstname = $row['firstname'];
@@ -43,5 +53,12 @@ $role = $row['role'];
 $player_type = $row['player_type'];
 $email_updates = $row['email_updates'];
 if($role=='1') $is_admin = true;
+// EVENTS# //
 $lasteventid = $row2['event_id'];
+// SETTINGS# //
+$finance_popup = $row3['finance_popup'];
+if($finance_popup=='1') $finance_popup_true = true;
+$finance_threshold_amount = $row3['finance_threshold_amount'];
+$booking_block = $row3['booking_block'];
+if($booking_block=='1') $booking_block = true;
 ?>
