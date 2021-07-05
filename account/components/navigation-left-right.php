@@ -98,7 +98,7 @@
                     &copy; 2021 Sv reeshof 7.
                 </div>
                 <div class="version">
-                    <b>Version: </b> 1.8 - Laatste update 08-06-21
+                    <b>Version: </b> 2.0 - Laatste update 08-06-21
                 </div>
             </div>
             <!-- #Footer -->

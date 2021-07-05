@@ -193,6 +193,7 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$eve
                                             <div class="form-group">
                                                 <?php echo $location; ?>
                                             </div>
+                                            <div style="width: 700px;position: relative;"><iframe width="700" height="440" src="https://maps.google.com/maps?width=700&amp;height=440&amp;hl=en&amp;q=<?php echo preg_replace('/[[:space:]]+/', '', $location); ?>+(<?php echo $category; ?>)&amp;ie=UTF8&amp;t=k&amp;z=13&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><br />
                                         </div>
                                     </div>
                                     <div class="row clearfix">

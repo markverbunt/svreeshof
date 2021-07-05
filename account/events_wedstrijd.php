@@ -78,11 +78,11 @@ $result = $mysqli->query($sql);
                             </h2>
                         </div>
                         <div class="body table-responsive">
-                            <table class="event-table table table-bordered table-striped table-hover dataTable js-exportable">
+                            <table class="event-table table table-bordered table-striped table-hover dataTable js-exportable event-order-date">
                                 <thead>
                                     <tr>
-                                        <th>Week</th>
                                         <th>Datum</th>
+                                        <th>Week</th>
                                         <th>Status</th>
                                         <th>Wedstrijd info</th>
                                         <th>Aanwezig</th>
@@ -104,8 +104,8 @@ $result = $mysqli->query($sql);
                                         $bookings_status = $row['bookings_status'];
                                         if($event_status=="0") echo "<tr class='afgelast'>";
                                         else if($event_status=="1") echo "<tr class=''>";
+                                            echo "<td data-order='$orgDate'>$event_date</td>";
                                             echo "<th scope='row'>$week</td>";
-                                            echo "<td>$event_date</td>";
                                             if($event_status=="0") echo "<td><span class='label bg-red'>AFGELAST</span></td>";
                                             else if($event_status=="1") echo "<td><span class='label bg-green'>ACTIEF</soan></td>";
                                             echo "<td>$gameinfo</td>";
@@ -188,6 +188,19 @@ $result = $mysqli->query($sql);
 
     <!-- Demo Js -->
     <script src="/js/demo.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.event-order-date').DataTable( {
+                destroy: true,
+                dom: 'Bfrtip',
+                responsive: true,
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ],
+                "order": [[ 0, "desc" ]]
+            });
+        });
+    </script>
 </body>
 
 </html>
