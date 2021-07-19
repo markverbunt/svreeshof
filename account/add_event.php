@@ -115,7 +115,7 @@ $mysqli->close();
                                                 <i class="material-icons">access_time</i>
                                             </span>
                                             <div class="form-line">
-                                                <input type="text" class="form-control time24" placeholder="VB: 10:00" required>
+                                                <input type="text" name="event_time" class="form-control time24" placeholder="VB: 10:00" required>
                                             </div>
                                         </div>
                                     </div>

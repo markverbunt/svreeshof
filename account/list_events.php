@@ -97,7 +97,7 @@ $event_category=$_GET['event_category'];
                                 <thead>
                                     <tr>
                                         <th>Datum</th>
-                                        <th>Week</th>
+                                        <th>Tijd</th>
                                         <th>Categorie</th>
                                         <th>Wedstrijd info</th>
                                         <th>Status</th>
@@ -109,7 +109,7 @@ $event_category=$_GET['event_category'];
                                 if ($result->num_rows > 0) {
                                     while ($row = $result->fetch_assoc()) {
                                         $event_id = $row['event_id'];
-                                        $week = $row['week'];
+                                        $event_time = $row['event_time'];
                                         $orgDate = $row['event_date'];
                                         $event_date = date("d-m-Y", strtotime($orgDate));
                                         $category = $row['category'];
@@ -118,7 +118,7 @@ $event_category=$_GET['event_category'];
                                         if($event_status=="0") echo "<tr class='afgelast'>";
                                         else if($event_status=="1") echo "<tr class=''>";
                                             echo "<td data-order='$orgDate'>$event_date</td>";
-                                            echo "<th scope='row'>$week</td>";
+                                            echo "<th scope='row'>$event_time</td>";
                                             echo "<td>$category</td>";
                                             echo "<td>$gameinfo</td>";
                                             if($event_status=="0") echo "<td><span class='label bg-red'>AFGELAST</span></td>";

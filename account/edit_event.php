@@ -14,7 +14,7 @@ if ($result->num_rows > 0) {
   header("location: /account/list_events.php?noEventsFound");
 }
 $category = $row['category'];
-$week = $row['week'];
+$event_time = $row['event_time'];
 $event_date = $row['event_date'];
 $orgDate = $row['event_date'];
 $event_date_title = date("d-m-Y", strtotime($orgDate));
@@ -104,7 +104,7 @@ $mysqli->close();
                     <div class="card">
                         <div class="header">
                             <h2>
-                                <strong><?php echo $category; ?></strong> - Week: <?php echo $week; ?> - <?php echo $event_date_title; ?>
+                                <strong><?php echo $category; ?></strong> - <?php echo $event_date_title; ?> <?php echo $event_time; ?>
                                 <small>Wijzig</small>
                             </h2>
                         </div>
@@ -142,69 +142,6 @@ $mysqli->close();
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
-                                                <b>Week *</b>
-                                                <div class="input-group">
-                                                    <span class="input-group-addon">
-                                                        <i class="material-icons">calendar_today</i>
-                                                    </span>
-                                                    <select class="form-control show-tick" name="week" required>
-                                                        <!--<option value="">-- Selecteer --</option>-->
-                                                        <option value="1" <?php if($week=="1") echo "selected"; ?>>1</option>
-                                                        <option value="2" <?php if($week=="2") echo "selected"; ?>>2</option>
-                                                        <option value="3" <?php if($week=="3") echo "selected"; ?>>3</option>
-                                                        <option value="4" <?php if($week=="4") echo "selected"; ?>>4</option>
-                                                        <option value="5" <?php if($week=="5") echo "selected"; ?>>5</option>
-                                                        <option value="6" <?php if($week=="6") echo "selected"; ?>>6</option>
-                                                        <option value="7" <?php if($week=="7") echo "selected"; ?>>7</option>
-                                                        <option value="8" <?php if($week=="8") echo "selected"; ?>>8</option>
-                                                        <option value="9" <?php if($week=="9") echo "selected"; ?>>9</option>
-                                                        <option value="10" <?php if($week=="10") echo "selected"; ?>>10</option>
-                                                        <option value="11" <?php if($week=="11") echo "selected"; ?>>11</option>
-                                                        <option value="12" <?php if($week=="12") echo "selected"; ?>>12</option>
-                                                        <option value="13" <?php if($week=="13") echo "selected"; ?>>13</option>
-                                                        <option value="14" <?php if($week=="14") echo "selected"; ?>>14</option>
-                                                        <option value="15" <?php if($week=="15") echo "selected"; ?>>15</option>
-                                                        <option value="16" <?php if($week=="16") echo "selected"; ?>>16</option>
-                                                        <option value="17" <?php if($week=="17") echo "selected"; ?>>17</option>
-                                                        <option value="18" <?php if($week=="18") echo "selected"; ?>>18</option>
-                                                        <option value="19" <?php if($week=="19") echo "selected"; ?>>19</option>
-                                                        <option value="20" <?php if($week=="20") echo "selected"; ?>>20</option>
-                                                        <option value="21" <?php if($week=="21") echo "selected"; ?>>21</option>
-                                                        <option value="22" <?php if($week=="22") echo "selected"; ?>>22</option>
-                                                        <option value="23" <?php if($week=="23") echo "selected"; ?>>23</option>
-                                                        <option value="24" <?php if($week=="24") echo "selected"; ?>>24</option>
-                                                        <option value="25" <?php if($week=="25") echo "selected"; ?>>25</option>
-                                                        <option value="26" <?php if($week=="26") echo "selected"; ?>>26</option>
-                                                        <option value="27" <?php if($week=="27") echo "selected"; ?>>27</option>
-                                                        <option value="28" <?php if($week=="28") echo "selected"; ?>>28</option>
-                                                        <option value="29" <?php if($week=="29") echo "selected"; ?>>29</option>
-                                                        <option value="30" <?php if($week=="30") echo "selected"; ?>>30</option>
-                                                        <option value="31" <?php if($week=="31") echo "selected"; ?>>31</option>
-                                                        <option value="32" <?php if($week=="32") echo "selected"; ?>>32</option>
-                                                        <option value="33" <?php if($week=="33") echo "selected"; ?>>33</option>
-                                                        <option value="34" <?php if($week=="34") echo "selected"; ?>>34</option>
-                                                        <option value="35" <?php if($week=="35") echo "selected"; ?>>35</option>
-                                                        <option value="36" <?php if($week=="36") echo "selected"; ?>>36</option>
-                                                        <option value="37" <?php if($week=="37") echo "selected"; ?>>37</option>
-                                                        <option value="38" <?php if($week=="38") echo "selected"; ?>>38</option>
-                                                        <option value="39" <?php if($week=="39") echo "selected"; ?>>39</option>
-                                                        <option value="40" <?php if($week=="40") echo "selected"; ?>>40</option>
-                                                        <option value="41" <?php if($week=="41") echo "selected"; ?>>41</option>
-                                                        <option value="42" <?php if($week=="42") echo "selected"; ?>>42</option>
-                                                        <option value="43" <?php if($week=="43") echo "selected"; ?>>43</option>
-                                                        <option value="44" <?php if($week=="44") echo "selected"; ?>>44</option>
-                                                        <option value="45" <?php if($week=="45") echo "selected"; ?>>45</option>
-                                                        <option value="46" <?php if($week=="46") echo "selected"; ?>>46</option>
-                                                        <option value="47" <?php if($week=="47") echo "selected"; ?>>47</option>
-                                                        <option value="48" <?php if($week=="48") echo "selected"; ?>>48</option>
-                                                        <option value="49" <?php if($week=="49") echo "selected"; ?>>49</option>
-                                                        <option value="50" <?php if($week=="50") echo "selected"; ?>>50</option>
-                                                        <option value="51" <?php if($week=="51") echo "selected"; ?>>51</option>
-                                                        <option value="52" <?php if($week=="52") echo "selected"; ?>>52</option>
-                                                    </select>   
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
                                                 <b>Datum *</b>
                                                 <div class="input-group">
                                                     <span class="input-group-addon">
@@ -212,6 +149,17 @@ $mysqli->close();
                                                     </span>
                                                     <div class="form-line">
                                                         <input type="text" id="DateTimePicker" class="DateTimePicker form-control" name="event_date" placeholder="Kies een datum..." value="<?php echo $event_date; ?>" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2 time_input">
+                                                <b>Tijd *</b>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">access_time</i>
+                                                    </span>
+                                                    <div class="form-line">
+                                                        <input type="text" name="event_time" class="form-control time24" placeholder="VB: 10:00" value="<?php echo $event_time; ?>" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -340,11 +288,16 @@ $mysqli->close();
     <!-- Custom Js -->
     <script src="/js/admin.js"></script>
     <script src="/js/pages/forms/basic-form-elements.js"></script>
+    <script src="/plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script>
 
     <!-- Demo Js -->
     <script src="/js/demo.js"></script>
     <script type="text/javascript">
         $('input#DateTimePicker').bootstrapMaterialDatePicker({ format : 'YYYY-MM-DD', minDate : new Date() });
+        $(function () {
+            var $time_input = $('.time_input');
+            $time_input.find('.time24').inputmask('hh:mm', { placeholder: '__:__ _m', alias: 'time24', hourFormat: '24' });
+        });
     </script>
 
 

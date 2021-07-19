@@ -3,7 +3,7 @@ require('helpers/session.php');
 require_once('helpers/global_vars.php');
 require('helpers/check_admin.php');
 
-$sql = "SELECT event_bookings.bookings_id, event_bookings.bookings_status, event_bookings.event_id, events.week, events.event_date, events.category, users.firstname, users.lastname, event_bookings.updated_at FROM event_bookings INNER JOIN users ON event_bookings.user_id=users.id INNER JOIN events ON event_bookings.event_id=events.event_id WHERE event_bookings.created_at!=event_bookings.updated_at";
+$sql = "SELECT event_bookings.bookings_id, event_bookings.bookings_status, event_bookings.event_id, events.event_time, events.event_date, events.category, users.firstname, users.lastname, event_bookings.updated_at FROM event_bookings INNER JOIN users ON event_bookings.user_id=users.id INNER JOIN events ON event_bookings.event_id=events.event_id WHERE event_bookings.created_at!=event_bookings.updated_at";
 
 $result = $mysqli->query($sql);
 
@@ -82,8 +82,8 @@ $result = $mysqli->query($sql);
                             <table class="event-table table table-bordered table-striped table-hover dataTable js-exportable">
                                 <thead>
                                     <tr>
-                                        <th>Week</th>
                                         <th>Datum</th>
+                                        <th>Tijd</th>
                                         <th>Categorie</th>
                                         <th>Naam</th>
                                         <th>Afgemeld</th>
@@ -95,7 +95,7 @@ $result = $mysqli->query($sql);
                                 if ($result->num_rows > 0) {
                                     while ($row = $result->fetch_assoc()) {
                                         $bookings_id = $row['bookings_id'];
-                                        $week = $row['week'];
+                                        $event_time = $row['event_time'];
                                         $orgDate = $row['event_date'];
                                         $event_date = date("d-m-Y", strtotime($orgDate));
                                         $firstname = $row['firstname'];
@@ -106,8 +106,8 @@ $result = $mysqli->query($sql);
                                         $orgDateTime = $row['updated_at'];
                                         $updated_at = date("d-m-Y H:i:s", strtotime($orgDateTime));
                                         echo "<tr>";
-                                            echo "<td>$week</td>";
                                             echo "<td>$event_date</td>";
+                                            echo "<td>$event_time</td>";
                                             echo "<td>$category</td>";
                                             echo "<td>$firstname $lastname</td>";
                                             if($bookings_status=="0") echo "<td><span class='label bg-red'>AFGEMELD</span></td>";

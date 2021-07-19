@@ -22,7 +22,7 @@ $event_id = $_POST['event_id'];
 
 include_once('db.php');
 
-$result = mysqli_query($mysqli, "SELECT event_bookings.bookings_id, event_bookings.bookings_status, event_bookings.event_id, event_bookings.user_id, users.firstname, users.lastname, users.email, event_bookings.updated_at, events.category, events.week, events.event_date, events.info, events.gameinfo, events.location, events.event_status, events.created_at FROM event_bookings INNER JOIN users ON event_bookings.user_id=users.id INNER JOIN events ON event_bookings.event_id=events.event_id WHERE event_bookings.event_id='$event_id' AND email_updates = TRUE");
+$result = mysqli_query($mysqli, "SELECT event_bookings.bookings_id, event_bookings.bookings_status, event_bookings.event_id, event_bookings.user_id, users.firstname, users.lastname, users.email, event_bookings.updated_at, events.category, events.event_time, events.event_date, events.info, events.gameinfo, events.location, events.event_status, events.created_at FROM event_bookings INNER JOIN users ON event_bookings.user_id=users.id INNER JOIN events ON event_bookings.event_id=events.event_id WHERE event_bookings.event_id='$event_id' AND email_updates = TRUE");
 
 foreach ($result as $row) {
   $body = file_get_contents('mails/event_new.html');
@@ -34,7 +34,7 @@ foreach ($result as $row) {
   $lastname = $row['lastname'];
   $email = $row['email'];
   $category = $row['category'];
-  $week = $row['week'];
+  $event_time = $row['event_time'];
   $info = $row['info'];
   $gameinfo = $row['gameinfo'];
   $location = $row['location'];
@@ -45,7 +45,7 @@ foreach ($result as $row) {
   $created_at = date("d-m-Y H:i:s", strtotime($orgDateTime));
   $Rawbookings_status = $row['bookings_status'];
 
-  $mail->Subject = . $category . ' toegevoegd voor week '  .$week . ' - ' . $event_date;
+  $mail->Subject = . $category . ' toegevoegd voor '  .$event_date . ' - ' . $event_time;
 
   if($Rawevent_status=="0") {
     $event_status = 'Afgelast';
@@ -67,7 +67,7 @@ foreach ($result as $row) {
         $body = str_replace('%lastname%', $lastname, $body); 
         $body = str_replace('%email%', $email, $body); 
         $body = str_replace('%category%', $category, $body);
-        $body = str_replace('%week%', $week, $body);
+        $body = str_replace('%event_time%', $event_time, $body);
         $body = str_replace('%info%', $info, $body);
         $body = str_replace('%gameinfo%', $gameinfo, $body);
         $body = str_replace('%location%', $location, $body);

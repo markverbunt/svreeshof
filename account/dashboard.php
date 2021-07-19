@@ -201,6 +201,7 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$las
                                         <tr>
                                             <th>Status</th>
                                             <th>Datum</th>
+                                            <th>Tijd</th>
                                             <th>Categorie</th>
                                             <th>Wedstrijd info</th>
                                             <th>Aanwezig</th>
@@ -213,6 +214,7 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$las
                                             while ($row = $result->fetch_assoc()) {
                                                 $event_id = $row['event_id'];
                                                 $orgDate = $row['event_date'];
+                                                $event_time = $row['event_time'];
                                                 $event_date = date("d-m-Y", strtotime($orgDate));
                                                 $category = $row['category'];
                                                 $gameinfo = $row['gameinfo'];
@@ -223,6 +225,7 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$las
                                                     if($event_status=="0") echo "<td><span class='label bg-red'>AFGELAST</span></td>";
                                                     else if($event_status=="1") echo "<td><span class='label bg-green'>ACTIEF</soan></td>";
                                                     echo "<td>$event_date</td>";
+                                                    echo "<td>$event_time</td>";
                                                     echo "<td>$category</td>";
                                                     echo "<td>$gameinfo</td>";
                                                     if($bookings_status=="0") echo "<td><span class='label bg-red'>NEE</span></td>";

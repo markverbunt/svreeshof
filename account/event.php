@@ -14,7 +14,7 @@ if ($result->num_rows > 0) {
   header("location: /account/list_events.php?noPlayersFound&event_id=$event_id");
 }
 $category = $row['category'];
-$week = $row['week'];
+$event_time = $row['event_time'];
 $event_date = $row['event_date'];
 $orgDate = $row['event_date'];
 $event_date = date("d-m-Y", strtotime($orgDate));
@@ -45,7 +45,7 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$eve
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Sv Reeshof Bierteam - <?php if($event_status=="0") echo "AFGELAST"; elseif($event_status=="1") echo "ACTIEF"; ?> <?php echo $category; ?> - Week: <?php echo $week; ?> - <?php echo $event_date; ?></title>
+    <title>Sv Reeshof Bierteam - <?php if($event_status=="0") echo "AFGELAST"; elseif($event_status=="1") echo "ACTIEF"; ?> <?php echo $category; ?> - <?php echo $event_date; ?> <?php echo $event_time; ?></title>
     <!-- Favicon-->
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
@@ -108,7 +108,7 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$eve
                     <div class="card">
                         <div class="header">
                             <h2>
-                            <strong><?php if($event_status=="0") echo "<span class='label bg-red'>AFGELAST</span>"; elseif($event_status=="1") echo "<span class='label bg-green'>ACTIEF</span>"; ?> <?php echo $category; ?></strong> - Week: <?php echo $week; ?> - <?php echo $event_date; ?>
+                            <strong><?php if($event_status=="0") echo "<span class='label bg-red'>AFGELAST</span>"; elseif($event_status=="1") echo "<span class='label bg-green'>ACTIEF</span>"; ?> <?php echo $category; ?></strong> - <?php echo $event_date; ?> <?php echo $event_time; ?>
                             </h2>
                             <?php if($is_admin) echo'<ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
@@ -163,9 +163,9 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$eve
                                 <div role="tabpanel" class="tab-pane fade in active" id="overzicht">
                                     <div class="row clearfix">
                                         <div class="col-md-3">
-                                            <b>Week</b>
+                                            <b>Tijd</b>
                                             <div class="input-group">
-                                                <?php echo $week; ?>
+                                                <?php echo $event_time; ?>
                                             </div>
                                         </div>
                                         <div class="col-md-3">

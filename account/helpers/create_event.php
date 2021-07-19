@@ -1,7 +1,7 @@
 <?php
 include_once('db.php');
 
-$week = $_POST['week'];
+$event_time = $_POST['event_time'];
 $event_date = $_POST['event_date'];
 $category = $_POST['category'];
 $info = $_POST['info'];
@@ -17,7 +17,7 @@ if ($mysqli->connect_errno) {
     echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 }
 
-if ($stmt = $mysqli->query("INSERT INTO events (week, event_date, category, info, gameinfo, location, event_status) VALUES ('$week', '$event_date', '$category', '$info', '$gameinfo', '$location', '1' )")) {
+if ($stmt = $mysqli->query("INSERT INTO events (event_time, event_date, category, info, gameinfo, location, event_status) VALUES ('$event_time', '$event_date', '$category', '$info', '$gameinfo', '$location', '1' )")) {
 			/*$last_id = $mysqli->insert_id;
 
 			$sql2 = "SELECT * FROM users";
