@@ -14,6 +14,7 @@ if ($result->num_rows > 0) {
   echo "Geen gebruiker gevonden";
 }
 
+$hashed_id = $row['hashed_id'];
 $username = $row['username'];
 $firstname = $row['firstname'];
 $lastname = $row['lastname'];
@@ -102,7 +103,7 @@ $mysqli->close();
                         </div>
                         <div class="body">
                             <form action="helpers/modify_user.php" method="post">
-                                <input type='hidden' name='id' value="<?php echo $id; ?>">
+                                <input type='hidden' name='hashed_id' value="<?php echo $hashed_id; ?>">
                                 <div class="row clearfix">
                                     <div class="col-md-3">
                                         <b>Status *</b>
