@@ -41,6 +41,7 @@
 // Global vars# //
 // USERS# //
 $id = $row['id'];
+$hashed_id = $row['hashed_id'];
 $username = $row['username'];
 $firstname = $row['firstname'];
 $lastname = $row['lastname'];

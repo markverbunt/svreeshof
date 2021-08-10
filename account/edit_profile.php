@@ -88,7 +88,7 @@ require_once('helpers/global_vars.php');
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade in active" id="profiel">
                                     <form action="helpers/edit_profile.php" method="post">
-                                        <input type='hidden' name='id' value='<?php echo $id; ?>'>
+                                        <input type='hidden' name='hashed_id' value='<?php echo $hashed_id; ?>'>
                                         <label for="email_updates">Email updates ontvangen</label>
                                         <div class="switch">
                                             <label>UIT<input type="checkbox" value="1" name="email_updates" <?php if($email_updates=="1") echo "checked"; ?>><span class="lever switch-col-cyan"></span>AAN</label>
