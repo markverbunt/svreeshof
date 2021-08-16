@@ -45,7 +45,7 @@ foreach ($result as $row) {
   $created_at = date("d-m-Y H:i:s", strtotime($orgDateTime));
   $Rawbookings_status = $row['bookings_status'];
 
-  $mail->Subject = . $category . ' toegevoegd voor '  .$event_date . ' - ' . $event_time;
+  $mail->Subject = 'Nieuwe ' . $category . ' toegevoegd voor '  .$event_date . ' - ' . $event_time;
 
   if($Rawevent_status=="0") {
     $event_status = 'Afgelast';
