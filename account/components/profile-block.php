@@ -1,4 +1,9 @@
 <div class="user-info">
+    <div class="image">
+        <?php if (isset($profile_photo)) echo"
+            <img src='$profile_photo' alt='$firstname $lastname' width='48' height='48'>
+        "; ?>
+    </div>
     <div class="info-container">
         <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo ''. $firstname . ' ' . $lastname . '' ; ?></div>
         <div class="email"><a style="color: #fff;" href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a></div>

@@ -8056,3 +8056,6 @@ color: #000 !important;
 #show-event .card .header strong, #edit-event .card .header strong {
   text-transform: uppercase;
 }
+
+.sidebar .user-info .info-container {
+  top: 5px; }

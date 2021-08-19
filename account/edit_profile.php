@@ -75,7 +75,12 @@ require_once('helpers/global_vars.php');
                             <ul class="nav nav-tabs" role="tablist">
                                 <li role="presentation" class="active">
                                     <a href="#profiel" data-toggle="tab">
-                                        <i class="material-icons">create</i> PROFIEL
+                                        <i class="material-icons">create</i> PROFIEL GEGEVENS
+                                    </a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#profiel-foto" data-toggle="tab">
+                                        <i class="material-icons">insert_photo</i> PROFIEL FOTO WIJZIGEN
                                     </a>
                                 </li>
                                 <li role="presentation">
@@ -125,6 +130,22 @@ require_once('helpers/global_vars.php');
                                         <input type="submit" class="btn btn-primary m-t-15 waves-effect" value="WIJZIG">
                                     </form>
                                 </div>
+                                <div role="tabpanel" class="tab-pane fade" id="profiel-foto">
+                                <?php if (isset($profile_photo)) echo"
+                                    <img src='$profile_photo' alt='$firstname $lastname' width='200' height='200'>
+                                    "; ?>
+                                    <form action="helpers/upload_photo.php" method="post" enctype="multipart/form-data">
+                                        <input type='hidden' name='hashed_id' value='<?php echo $hashed_id; ?>'>
+                                        <label for="ProfilePhoto">Upload een profiel foto</label>
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="file" name="ProfilePhoto" id="ProfilePhoto">
+                                            </div>
+                                        </div>
+
+                                        <input type="submit" class="btn btn-primary m-t-15 waves-effect" value="UPLOAD FOTO" name="submit">
+                                    </form>
+                                </div>
                                 <div role="tabpanel" class="tab-pane fade" id="wachtwoord-wijzigen">
                                     <form action="helpers/change_password.php" method="post">
                                         <input type='hidden' name='id' value='<?php echo $id; ?>'>
@@ -166,7 +187,7 @@ require_once('helpers/global_vars.php');
 
     <!-- Slimscroll Plugin Js -->
     <script src="/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
-
+    
     <!-- Waves Effect Plugin Js -->
     <script src="/plugins/node-waves/waves.js"></script>
 
