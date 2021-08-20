@@ -53,7 +53,8 @@ $finance = $row['finance'];
 $role = $row['role'];
 $player_type = $row['player_type'];
 $email_updates = $row['email_updates'];
-$profile_photo = '/account/uploads/'. $row['profile_photo'];
+$profile_photo = $row['profile_photo'];
+$profile_photo_url = '/account/uploads/'. $row['profile_photo'];
 if($role=='1') $is_admin = true;
 // EVENTS# //
 $lasteventid = $row2['event_id'];

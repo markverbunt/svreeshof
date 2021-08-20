@@ -8059,3 +8059,17 @@ color: #000 !important;
 
 .sidebar .user-info .info-container {
   top: 5px; }
+
+img.profile-photo-preview {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%;
+  vertical-align: bottom !important;
+}
+img.profile-photo-list {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%;
+}

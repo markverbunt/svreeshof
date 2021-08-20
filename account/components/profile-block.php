@@ -1,7 +1,7 @@
 <div class="user-info">
     <div class="image">
         <?php if (isset($profile_photo)) echo"
-            <img src='$profile_photo' alt='$firstname $lastname' width='48' height='48'>
+            <img src='$profile_photo_url' alt='$firstname $lastname' width='48' height='48'>
         "; ?>
     </div>
     <div class="info-container">

@@ -131,20 +131,28 @@ require_once('helpers/global_vars.php');
                                     </form>
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="profiel-foto">
-                                <?php if (isset($profile_photo)) echo"
-                                    <img src='$profile_photo' alt='$firstname $lastname' width='200' height='200'>
-                                    "; ?>
-                                    <form action="helpers/upload_photo.php" method="post" enctype="multipart/form-data">
-                                        <input type='hidden' name='hashed_id' value='<?php echo $hashed_id; ?>'>
-                                        <label for="ProfilePhoto">Upload een profiel foto</label>
-                                        <div class="form-group">
-                                            <div class="form-line">
-                                                <input type="file" name="ProfilePhoto" id="ProfilePhoto">
-                                            </div>
+                                    <div class="row clearfix">
+                                        <div class="col-xs-12">
+                                            <?php if (isset($profile_photo)) echo"
+                                                <img src='$profile_photo_url' alt='$firstname $lastname' width='200' height='200' class='profile-photo-preview'>
+                                            "; ?>
                                         </div>
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-xs-12">
+                                            <form action="helpers/upload_photo.php" method="post" enctype="multipart/form-data">
+                                                <input type='hidden' name='hashed_id' value='<?php echo $hashed_id; ?>'>
+                                                <label for="ProfilePhoto">Upload een profiel foto</label>
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        <input type="file" name="ProfilePhoto" id="ProfilePhoto">
+                                                    </div>
+                                                </div>
 
-                                        <input type="submit" class="btn btn-primary m-t-15 waves-effect" value="UPLOAD FOTO" name="submit">
-                                    </form>
+                                                <input type="submit" class="btn btn-primary m-t-15 waves-effect" value="UPLOAD FOTO" name="submit">
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="wachtwoord-wijzigen">
                                     <form action="helpers/change_password.php" method="post">
