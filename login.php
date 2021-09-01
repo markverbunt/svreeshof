@@ -145,7 +145,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <button class="btn btn-block bg-pink waves-effect" type="submit">INLOGGEN</button>
                         </div>
                     </div>
-                    <div class="row m-t-15 m-b--20">
+                    <div class="row m-t-15 m-b--20 hidden">
                         <div class="col-xs-12">
                             <a href="register.php">Nog geen account?</a>
                         </div>
