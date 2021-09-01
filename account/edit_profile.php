@@ -156,7 +156,7 @@ require_once('helpers/global_vars.php');
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" id="wachtwoord-wijzigen">
                                     <form action="helpers/change_password.php" method="post">
-                                        <input type='hidden' name='id' value='<?php echo $id; ?>'>
+                                        <input type='hidden' name='hashed_id' value='<?php echo $hashed_id; ?>'>
                                         <label for="password">Password</label>
                                         <div class="form-group">
                                             <div class="form-line">

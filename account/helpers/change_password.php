@@ -14,7 +14,7 @@ $password = $_POST['password'];
 
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-if ($stmt = $mysqli->query("UPDATE users SET password='$hashed_password' WHERE id='$_POST[id]'")) {
+if ($stmt = $mysqli->query("UPDATE users SET password='$hashed_password' WHERE hashed_id='$_POST[hashed_id]'")) {
 }
 $mysqli->close();
 ?>

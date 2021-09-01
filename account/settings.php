@@ -18,8 +18,6 @@ $finance_popup = $row['finance_popup'];
 $finance_threshold_amount = $row['finance_threshold_amount'];
 $booking_block = $row['booking_block'];
 
-$mysqli->close();
-
 ?>
 <!DOCTYPE html>
 <html lang="nl-NL">
@@ -138,7 +136,7 @@ $mysqli->close();
             <!-- #END# Vertical Layout -->
         </div>
     </section>
-
+<?php $mysqli->close(); ?>
 
     <!-- Jquery Core Js -->
     <script src="/plugins/jquery/jquery.min.js"></script>

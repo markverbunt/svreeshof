@@ -3,7 +3,7 @@ require('helpers/session.php');
 require_once('helpers/global_vars.php');
 require('helpers/check_admin.php');
 
-//$sql = "SELECT event_bookings.bookings_id, event_bookings.bookings_status, event_bookings.event_id, events.event_time, events.event_date, events.category, test_users.firstname, test_users.lastname, event_bookings.updated_at FROM event_bookings INNER JOIN test_users ON event_bookings.user_id=test_users.id INNER JOIN events ON event_bookings.event_id=events.event_id INNER JOIN email_logs ON test_users.user_id=email_logs.user_id";
+//$sql = "SELECT event_bookings.bookings_id, event_bookings.bookings_status, event_bookings.event_id, events.event_time, events.event_date, events.category, users.firstname, users.lastname, event_bookings.updated_at FROM event_bookings INNER JOIN users ON event_bookings.user_id=users.id INNER JOIN events ON event_bookings.event_id=events.event_id INNER JOIN email_logs ON users.user_id=email_logs.user_id";
 
 $sql = "SELECT users.firstname, users.lastname, email_logs.email_id, email_logs.type, email_logs.created_at, events.event_id, events.event_time, events.category, events.event_date FROM email_logs INNER JOIN users ON email_logs.user_id=users.id INNER JOIN events ON email_logs.event_id=events.event_id";
 
@@ -17,7 +17,7 @@ $result = $mysqli->query($sql);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Sv Reeshof Bierteam - Email logs</title>
+    <title>Sv Reeshof Bierteam - Automatische email logs</title>
     <!-- Favicon-->
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
@@ -86,8 +86,8 @@ $result = $mysqli->query($sql);
                                     <tr>
                                         <th>Aan</th>
                                         <th>Categorie</th>
-                                        <th>Datum</th>
                                         <th>Tijd</th>
+                                        <th>Datum</th>
                                         <th>Type</th>
                                         <th>Verzonden op</th>
                                     </tr>

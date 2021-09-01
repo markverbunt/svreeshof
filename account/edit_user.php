@@ -24,8 +24,6 @@ $finance = $row['finance'];
 $user_status = $row['user_status'];
 $player_type = $row['player_type'];
 
-$mysqli->close();
-
 ?>
 <!DOCTYPE html>
 <html lang="nl-NL">
@@ -210,7 +208,7 @@ $mysqli->close();
             <!-- #END# Vertical Layout -->
         </div>
     </section>
-
+    <?php $mysqli->close(); ?>
 
     <!-- Jquery Core Js -->
     <script src="/plugins/jquery/jquery.min.js"></script>

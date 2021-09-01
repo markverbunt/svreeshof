@@ -28,6 +28,13 @@
                             </li>
                         </ul>
                     </li>
+                    <li>
+                        <a href="/account/messages.php">
+                            <i class="material-icons">email</i>
+                            <span>Berichtenbox</span>
+                            <span class="badge bg-yellow"><?php echo $messagecount; ?></span>
+                        </a>
+                    </li>
                     <?php if($is_admin) echo'
                     <li class="header">ADMINISTRATOR</li>
                     <li>
@@ -71,22 +78,38 @@
                         </a>
                     </li>
                     <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">email</i>
+                            <span>Berichten</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="/account/new_message.php">Nieuw bericht</a>
+                            </li>
+                            <li>
+                                <a href="/account/list_messages.php">Verzonden berichten</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
                         <a href="/account/settings.php">
                             <i class="material-icons">settings</i>
                             <span>Instellingen</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/account/afmeldingen-logs.php">
+                        <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">update</i>
-                            <span>Afmeldingen logs</span>
+                            <span>Logs</span>
                         </a>
-                    </li>
-                    <li>
-                        <a href="/account/email-logs.php">
-                            <i class="material-icons">update</i>
-                            <span>Email logs</span>
-                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="/account/afmeldingen-logs.php">Afmeldingen logs</a>
+                            </li>
+                            <li>
+                                <a href="/account/email-logs.php">Email logs</a>
+                            </li>
+                        </ul>
                     </li>
                 '; ?>
                 </ul>
@@ -98,7 +121,7 @@
                     &copy; 2021 Sv reeshof 7.
                 </div>
                 <div class="version">
-                    <b>Version: </b> 2.0 - Laatste update 08-06-21
+                    <b>Version: </b> 2.5 - Laatste update 01-09-21
                 </div>
             </div>
             <!-- #Footer -->

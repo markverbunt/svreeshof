@@ -18,7 +18,7 @@
 	  echo "Geen gebruiker gevonden";
 	}
 
-	$sql2 = "SELECT * FROM events ORDER BY event_id DESC LIMIT 1 ";
+	$sql2 = "SELECT * FROM events WHERE event_date >= CURDATE() AND category = 'wedstrijd' ORDER BY event_date ASC LIMIT 1 ";
 	$result2 = $mysqli->query($sql2);
 
 	if ($result2->num_rows > 0) {
@@ -63,5 +63,5 @@ $finance_popup = $row3['finance_popup'];
 if($finance_popup=='1') $finance_popup_true = true;
 $finance_threshold_amount = $row3['finance_threshold_amount'];
 $booking_block = $row3['booking_block'];
-if($booking_block=='1') $booking_block = true;
+if($booking_block=='1' && $finance>=$finance_threshold_amounts && !$finance==0) $booking_block_true = true; 
 ?>

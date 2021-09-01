@@ -8045,8 +8045,13 @@ table.event-table tr.afgelast, table.dashboard-task-infos tr.afgelast  {
 background: #ff9e9e;
 }
 
-table.event-table tr.noplayer, table.dashboard-task-infos tr.noplayer  {
+table.event-table tr.noplayer, table.dashboard-task-infos tr.noplayer   {
 background: #ffef9e;
+}
+
+table.messages-table tr.new, .dropdown-menu ul.menu li.new {
+background: #ffef9e57;
+font-weight: bold;
 }
 
 table.event-table tr.noplayer .label.bg-yellow, table.dashboard-task-infos tr.noplayer .label.bg-yellow {
@@ -8072,4 +8077,8 @@ img.profile-photo-list {
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   border-radius: 50%;
+}
+
+.sweet-alert.email-wide {
+  width: 800px;
 }

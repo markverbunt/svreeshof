@@ -28,8 +28,6 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$eve
     $total  = "". $totals['COUNT(*)'] ."";
 }
 
-$mysqli->close();
-
 ?>
 <!DOCTYPE html>
 <html lang="nl-NL">
@@ -255,7 +253,7 @@ $mysqli->close();
             <!-- #END# Vertical Layout -->
         </div>
     </section>
-
+    <?php $mysqli->close(); ?>
 
     <!-- Jquery Core Js -->
     <script src="/plugins/jquery/jquery.min.js"></script>
