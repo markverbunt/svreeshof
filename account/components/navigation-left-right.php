@@ -72,7 +72,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="/account/finance.php">
+                        <a href="/account/finance_overview.php">
                             <i class="material-icons">euro</i>
                             <span>Financieel</span>
                         </a>
@@ -121,7 +121,7 @@
                     &copy; 2021 Sv reeshof 7.
                 </div>
                 <div class="version">
-                    <b>Version: </b> 2.5 - Laatste update 01-09-21
+                    <b>Version: </b> 2.6 - Laatste update 25-09-21
                 </div>
             </div>
             <!-- #Footer -->

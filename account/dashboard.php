@@ -137,15 +137,17 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$las
             </div>';?>
             <div class="row clearfix">
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <div class="info-box bg-pink hover-expand-effect">
-                        <div class="icon">
-                            <i class="material-icons">euro</i>
+                    <a href="/account/finance.php" style="cursor: pointer; text-decoration: none;">
+                        <div class="info-box bg-pink hover-expand-effect">
+                            <div class="icon">
+                                <i class="material-icons">euro</i>
+                            </div>
+                            <div class="content">
+                                <div class="text">OPENSTAAND BEDRAG</div>
+                                <div class="number count-to" data-from="0" data-to="<?php echo $finance;?>" data-speed="1000" data-fresh-interval="5"></div>
+                            </div>
                         </div>
-                        <div class="content">
-                            <div class="text">OPENSTAAND BEDRAG</div>
-                            <div class="number count-to" data-from="0" data-to="<?php echo $finance;?>" data-speed="1000" data-fresh-interval="5"></div>
-                        </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                     <a href="/account/events_wedstrijd.php" style="cursor: pointer; text-decoration: none;">
@@ -315,8 +317,10 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$las
             cancelButtonText: "Nee nu niet",
             confirmButtonText: "Ik ga nu betalen",
             closeOnConfirm: true
+        }, function () {
+            window.location.href = '/account/finance.php';
         });
-        }
+    }
     </script>
     <?php
         if($finance_popup_true && $finance>=$finance_threshold_amounts && !$finance==0) {

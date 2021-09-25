@@ -104,7 +104,12 @@ $result = $mysqli->query($sql);
                                         $bookings_status = $row['bookings_status'];
                                         if($event_status=="0") echo "<tr class='afgelast'>";
                                         else if($event_status=="1") echo "<tr class=''>";
+                                        if(strtotime($event_date) < strtotime('now')) {
+                                            echo "<td data-order='2030-00-00'>$event_date</td>";
+                                        }
+                                        else {
                                             echo "<td data-order='$orgDate'>$event_date</td>";
+                                        }
                                             echo "<th scope='row'>$event_time</td>";
                                             if($event_status=="0") echo "<td><span class='label bg-red'>AFGELAST</span></td>";
                                             else if($event_status=="1") echo "<td><span class='label bg-green'>ACTIEF</soan></td>";
@@ -197,7 +202,7 @@ $result = $mysqli->query($sql);
                 buttons: [
                     'copy', 'csv', 'excel', 'pdf', 'print'
                 ],
-                "order": [[ 0, "desc" ]]
+                "order": [[ 0, "asc" ]]
             });
         });
     </script>

@@ -3,13 +3,6 @@ require('helpers/session.php');
 require_once('helpers/global_vars.php');
 require('helpers/check_admin.php');
 
-$sql = "SELECT * FROM users ORDER BY finance DESC";
-$result = $mysqli->query($sql);
-
-foreach($mysqli->query("SELECT SUM(finance) FROM users") as $TotalPaidFinance) {
-    $TotalPaid  = "". $TotalPaidFinance['SUM(finance)'] ."";
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="nl-NL">
@@ -77,63 +70,16 @@ foreach($mysqli->query("SELECT SUM(finance) FROM users") as $TotalPaidFinance) {
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                     <div class="card">
                         <div class="header">
-                            <h2>Financieel overzicht</h2>
+                            <h2>Openstaand bedrag</h2>
                         </div>
                         <div class="body">
-                            <div class="table-responsive">
-                                <table id="finance-table" class="table table-bordered table-striped table-hover dataTable js-exportable">
-                                    <thead>
-                                        <tr>
-                                            <th>Voornaam</th>
-                                            <th>Achternaam</th>
-                                            <th>Email</th>
-                                            <th>Openstaand bedrag</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    <?php
-                                    if ($result->num_rows > 0) {
-                                        while ($row = $result->fetch_assoc()) {
-                                            $id = $row['id'];
-                                            $firstname = $row['firstname'];
-                                            $lastname = $row['lastname'];
-                                            $email = $row['email'];
-                                            $finance = $row['finance'];
-                                            $financeBar = $finance*2;
-                                            echo "<tr>";
-                                                echo "<td>$firstname</td>";
-                                                echo "<td>$lastname</td>";
-                                                echo "<td><a href='mailto:$email'>$email</a></td>";
-                                                if($finance>"25") {echo "
-                                                <td><div class='progress'>
-                                                        <div class='progress-bar bg-red' role='progressbar' aria-valuenow='$finance' aria-valuemin='0' aria-valuemax='50' style='width: $financeBar%'>&euro; $finance</div>
-                                                    </div>
-                                                </td>";
-                                                }
-                                                else if($finance=="0") {echo "
-                                                <td><div class='progress'>
-                                                        <div class='progress-bar bg-green' role='progressbar' aria-valuenow='$finance' aria-valuemin='0' aria-valuemax='50' style='width: 100%'>&euro; $finance</div>
-                                                    </div>
-                                                </td>";
-                                                }
-                                                else {echo"
-                                                <td><div class='progress'>
-                                                        <div class='progress-bar bg-green' role='progressbar' aria-valuenow='$finance' aria-valuemin='0' aria-valuemax='50' style='width: $financeBar%'>&euro; $finance</div>
-                                                    </div>
-                                                </td>";
-                                                }
-                                                echo "<td><a href='/account/edit_user.php?id=$id'><i class='material-icons'>create</i></a></td>";
-                                            echo "</tr>";
-                                        }
-                                    } else {
-                                      echo "Geen data gevonden";
-                                    }                                   
-                                        $mysqli->close();
-                                        ?>
-                                    </tbody>
-                                </table>
-                            </div>
+                            <p>Uit onze administratie blijk dat er nog : &euro;<?php echo $finance ; ?> open staat voor <?php echo ''. $firstname . ' ' . $lastname . '' ; ?>.</p>
+                            <p>Je kan dit betalen door:</p>
+                            <ul>
+                                <li>De QR code te scannen of;</li>
+                                <li>Op de QR of link te klikken of;</li>
+                                <li>Door het over te maken naar <strong>NL50 RABO 0358 5011 64</strong> t.n.v <strong>M. Platvoet voetbal</strong> onder vermelding van <strong>Sparen Sv Reeshof 7</strong></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -142,10 +88,11 @@ foreach($mysqli->query("SELECT SUM(finance) FROM users") as $TotalPaidFinance) {
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                     <div class="card">
                         <div class="header">
-                            <h2>Totaal openstaand/betaald</h2>
+                            <h2>Betaal direct</h2>
                         </div>
                         <div class="body">
-                            <div id="donut_chart" class="dashboard-donut-chart"></div>
+                            <a href="https://betaalverzoek.rabobank.nl/betaalverzoek/?id=iR33NJWFRpufUQs845ewsQ" target="_blank"><img class="img-responsive" src="/images/QR-code.png" alt="QR code"></a>
+                            <p style="text-align:center;"><a href="https://betaalverzoek.rabobank.nl/betaalverzoek/?id=iR33NJWFRpufUQs845ewsQ" target="_blank">Betaal hier direct</a></p>
                         </div>
                     </div>
                 </div>
@@ -206,27 +153,6 @@ foreach($mysqli->query("SELECT SUM(finance) FROM users") as $TotalPaidFinance) {
 
     <!-- Demo Js -->
     <script src="/js/demo.js"></script>
-    <script>
-        $(function () {
-            initDonutChart();
-        });
-        function initDonutChart() {
-            Morris.Donut({
-                element: 'donut_chart',
-                data: [{
-                    label: 'Openstaand',
-                    value: <?php echo $TotalPaid;?>
-                }, {
-                    label: 'Betaald',
-                    value: <?php echo 1150-$TotalPaid;?>
-                }],
-                colors: ['rgb(244, 67, 53)', 'rgb(76, 175, 80)'],
-                formatter: function (y) {
-                    return y + '€'
-                }
-            });
-        }
-    </script>
 </body>
 
 </html>
