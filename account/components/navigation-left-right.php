@@ -29,6 +29,12 @@
                         </ul>
                     </li>
                     <li>
+                        <a href="/account/finance.php">
+                            <i class="material-icons">euro</i>
+                            <span>Sparen</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="/account/messages.php">
                             <i class="material-icons">email</i>
                             <span>Berichtenbox</span>
