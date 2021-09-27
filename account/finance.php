@@ -1,7 +1,6 @@
 <?php
 require('helpers/session.php');
 require_once('helpers/global_vars.php');
-require('helpers/check_admin.php');
 
 ?>
 <!DOCTYPE html>
