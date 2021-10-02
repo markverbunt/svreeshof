@@ -63,5 +63,5 @@ $finance_popup = $row3['finance_popup'];
 if($finance_popup=='1') $finance_popup_true = true;
 $finance_threshold_amount = $row3['finance_threshold_amount'];
 $booking_block = $row3['booking_block'];
-if($booking_block=='1' && $finance>=$finance_threshold_amounts && !$finance==0) $booking_block_true = true; 
+if($booking_block=='1' && $finance>=$finance_threshold_amount && !$finance==0) $booking_block_true = true; 
 ?>

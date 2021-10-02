@@ -323,9 +323,9 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$las
     }
     </script>
     <?php
-        if($finance_popup_true && $finance>=$finance_threshold_amounts && !$finance==0) {
-    echo '<script>financeNotification();</script>';}
-
+        if($finance_popup_true && $finance>=$finance_threshold_amount && !$finance==0) {
+            echo '<script>financeNotification();</script>';
+        }
     ?>
 </body>
 

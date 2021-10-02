@@ -29,6 +29,10 @@ $sql2 = "SELECT event_bookings.bookings_id, event_bookings.bookings_status, even
 
 $result2 = $mysqli->query($sql2);
 
+//$sql3 = "SELECT event_bookings.bookings_id, event_bookings.bookings_status, event_bookings.event_id, users.firstname, users.lastname, users.profile_photo, users.player_type, event_bookings.updated_at FROM event_bookings INNER JOIN users ON event_bookings.user_id=users.id INNER JOIN events ON event_bookings.event_id=events.event_id WHERE event_bookings.event_id='$event_id' ORDER BY FIELD(event_bookings.bookings_status, '0', '1')";
+
+//$result3 = $mysqli->query($sql3);
+
 foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$event_id' AND bookings_status='0'") as $totafmeldingen) {
     $afmeldingen  = "". $totafmeldingen['COUNT(*)'] ."";
 }
@@ -128,7 +132,7 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$eve
                                     <input type='hidden' name='event_id' value="<?php echo $event_id; ?>">
                                     <input type='hidden' name='bookings_id' value="<?php echo $bookings_id; ?>">
                                     <?php
-                                        if($category=="wedstrijd" && strtotime($event_date) > strtotime('now')) {
+                                        if($category=="wedstrijd" && strtotime($event_date) > strtotime('now+1day')) {
                                             if(!$booking_block_true) {
                                                 if($bookings_status=="1" && $event_status=="1") echo "<input type='hidden' name='bookings_status' value='0'><button class='btn btn-danger waves-effect' type='submit' name='cancel'><i class='material-icons'>close</i><span>Ik wil me afmelden</span></button>";
                                                 else if($bookings_status=="0"  && $event_status=="1") echo "<input type='hidden' name='bookings_status' value='1'><button class='btn btn-success waves-effect' type='submit' name='aanmelden'><i class='material-icons'>check</i><span>Ik wil me toch weer aanmelden</span></button>";
@@ -153,9 +157,16 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$eve
                                 </li>
                                 <li role="presentation">
                                     <a href="#afmeldingen" data-toggle="tab">
-                                        <i class="material-icons">face</i><?php if($category=="wedstrijd") {echo "AFMELDINGEN (". $afmeldingen .")";} else {echo "AANMELDINGEN (". $aanmeldingen .")";} ?>
+                                        <i class="material-icons">face</i> <?php if($category=="wedstrijd") {echo "AFMELDINGEN (". $afmeldingen .")";} else {echo "AANMELDINGEN (". $aanmeldingen .")";} ?>
                                     </a>
                                 </li>
+                                <?php if($category=="empty") : ?>
+                                <li role="presentation">
+                                    <a href="#doelpuntenmakers" data-toggle="tab">
+                                        <i class="material-icons">sports_soccer</i> Doelpuntenmakers
+                                    </a>
+                                </li>
+                                <?php endif; ?>
                             </ul>
 
                             <!-- Tab panes -->
@@ -240,11 +251,52 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$eve
                                         } else {
                                           echo "<td>Geen afmeldingen gevonden</td>";
                                         }                                   
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <?php if($category=="empty") : ?>
+                                <div role="tabpanel" class="tab-pane fade" id="doelpuntenmakers">
+                                    <table class="event-table table table-bordered table-striped table-hover dataTable js-exportable">
+                                        <thead>
+                                            <tr>
+                                                <th>Naam</th>
+                                                <th>Aantal doelpunten</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php
+                                        if ($result3->num_rows > 0) {
+                                            while ($row = $result3->fetch_assoc()) {
+                                                $firstname = $row['firstname'];
+                                                $lastname = $row['lastname'];
+                                                $profile_photo = $row['profile_photo'];
+                                                $profile_photo_url = '/account/uploads/'. $row['profile_photo'];
+                                                $player_type = $row['player_type'];
+                                                $bookings_status = $row['bookings_status'];
+                                                if($player_type=="1") echo "<tr class='noplayer'>";
+                                                else if($bookings_status=="0") echo "<tr class='afgelast'>";
+                                                else if($bookings_status=="1") echo "<tr class=''>";
+                                                    if (isset($profile_photo)) { echo"
+                                                        <td><img src='$profile_photo_url' alt='$firstname $lastname' width='20' height='20' class='profile-photo-list'> $firstname $lastname</td>";
+                                                    }
+                                                    else {
+                                                        echo "<td>$firstname $lastname</td>";
+                                                    }
+                                                    if($player_type=="1") echo "<td><span class='label bg-yellow'>RUSTEND LID</span></td>";
+                                                    if($bookings_status=="0" && $player_type=="0") echo "<td><span class='label bg-red'>NEE</span></td>";
+                                                    else if($bookings_status=="1" && $player_type=="0") echo "<td><span class='label bg-green'>JA</span></td>";
+                                                echo "</tr>";
+                                            }
+                                        } else {
+                                          echo "<td>Geen afmeldingen gevonden</td>";
+                                        }                                   
                                             $mysqli->close();
                                             ?>
                                         </tbody>
                                     </table>
                                 </div>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
