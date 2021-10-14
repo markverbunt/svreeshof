@@ -67,7 +67,7 @@ foreach ($result as $row) {
         $body = str_replace('%lastname%', $lastname, $body); 
         $body = str_replace('%email%', $email, $body); 
         $body = str_replace('%category%', $category, $body);
-        $body = str_replace('%event_date%', $event_date, $body);
+        $body = str_replace('%event_time%', $event_time, $body);
         $body = str_replace('%info%', $info, $body);
         $body = str_replace('%gameinfo%', $gameinfo, $body);
         $body = str_replace('%location%', $location, $body);
