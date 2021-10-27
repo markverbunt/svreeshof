@@ -25,7 +25,7 @@ $event_status = $row['event_status'];
 $bookings_id = $row['bookings_id'];
 $bookings_status = $row['bookings_status'];
 
-$sql2 = "SELECT event_bookings.bookings_id, event_bookings.bookings_status, event_bookings.event_id, users.firstname, users.lastname, users.profile_photo, users.player_type, event_bookings.updated_at FROM event_bookings INNER JOIN users ON event_bookings.user_id=users.id INNER JOIN events ON event_bookings.event_id=events.event_id WHERE event_bookings.event_id='$event_id' ORDER BY FIELD(event_bookings.bookings_status, '0', '1')";
+$sql2 = "SELECT event_bookings.bookings_id, event_bookings.bookings_status, event_bookings.event_id, event_bookings.user_id, users.firstname, users.lastname, users.profile_photo, users.player_type, event_bookings.updated_at FROM event_bookings INNER JOIN users ON event_bookings.user_id=users.id INNER JOIN events ON event_bookings.event_id=events.event_id WHERE event_bookings.event_id='$event_id' ORDER BY FIELD(event_bookings.bookings_status, '0', '1')";
 
 $result2 = $mysqli->query($sql2);
 
@@ -222,6 +222,9 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$eve
                                             <tr>
                                                 <th>Naam</th>
                                                 <th>Aanwezig <?php if($category=="wedstrijd" && strtotime($event_date) < strtotime('now')) {echo "geweest";} else if($category=="training" && strtotime($event_date) < strtotime('now-1day')) {echo "geweest";}?></th>
+                                                <?php if($is_admin) : ?>
+                                                    <th>Aan/Afmelden</th>
+                                                <?php endif; ?>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -234,6 +237,9 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$eve
                                                 $profile_photo_url = '/account/uploads/'. $row['profile_photo'];
                                                 $player_type = $row['player_type'];
                                                 $bookings_status = $row['bookings_status'];
+                                                $user_id = $row['user_id'];
+                                                $event_id = $row['event_id'];
+                                                $bookings_id = $row['bookings_id'];
                                                 if($player_type=="1") echo "<tr class='noplayer'>";
                                                 else if($bookings_status=="0") echo "<tr class='afgelast'>";
                                                 else if($bookings_status=="1") echo "<tr class=''>";
@@ -246,6 +252,26 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$eve
                                                     if($player_type=="1") echo "<td><span class='label bg-yellow'>RUSTEND LID</span></td>";
                                                     if($bookings_status=="0" && $player_type=="0") echo "<td><span class='label bg-red'>NEE</span></td>";
                                                     else if($bookings_status=="1" && $player_type=="0") echo "<td><span class='label bg-green'>JA</span></td>";
+                                                    if($is_admin) {
+                                                        if($bookings_status=="1") {
+                                                            echo "<td><form action='helpers/modify_bookings.php' method='post'>
+                                                                    <input type='hidden' name='user_id' value='$user_id'>
+                                                                    <input type='hidden' name='event_id' value='$event_id'>
+                                                                    <input type='hidden' name='bookings_id' value='$bookings_id'>
+                                                                    <input type='hidden' name='bookings_status' value='0'>
+                                                                    <button class='btn btn-danger waves-effect' type='submit' name='cancel'><i class='material-icons'>close</i><span>Afmelden</span></button>
+                                                                </form></td>";
+                                                            }
+                                                        else if($bookings_status=="0") {
+                                                            echo "<td><form action='helpers/modify_bookings.php' method='post'>
+                                                                    <input type='hidden' name='user_id' value='$user_id'>
+                                                                    <input type='hidden' name='event_id' value='$event_id'>
+                                                                    <input type='hidden' name='bookings_id' value='$bookings_id'>
+                                                                    <input type='hidden' name='bookings_status' value='1'>
+                                                                    <button class='btn btn-success waves-effect' type='submit' name='aanmelden'><i class='material-icons'>check</i><span>Aanmelden</span></button>
+                                                                </form></td>";
+                                                            }
+                                                        }
                                                 echo "</tr>";
                                             }
                                         } else {
