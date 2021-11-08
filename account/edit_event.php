@@ -24,6 +24,12 @@ $location = $row['location'];
 $event_status = $row['event_status'];
 $email_send = $row['email_send'];
 
+//$sql3 = "SELECT event_bookings.bookings_id, event_bookings.bookings_status, event_bookings.event_id, event_bookings.user_id, users.firstname, users.lastname, users.profile_photo, users.player_type, event_bookings.updated_at FROM event_bookings INNER JOIN users ON event_bookings.user_id=users.id INNER JOIN events ON event_bookings.event_id=events.event_id WHERE event_bookings.event_id='$event_id' AND event_bookings.bookings_status='1'";
+
+$sql3 = "SELECT event_bookings.bookings_id, event_bookings.bookings_status, event_bookings.event_id, event_bookings.user_id, users.firstname, users.lastname, users.profile_photo, users.player_type, event_bookings.updated_at, event_scorers.scorers_id, event_scorers.goals FROM event_bookings INNER JOIN users ON event_bookings.user_id=users.id INNER JOIN events ON event_bookings.event_id=events.event_id LEFT JOIN event_scorers ON event_bookings.bookings_id=event_scorers.bookings_id WHERE event_bookings.event_id='$event_id' AND event_bookings.bookings_status='1'";
+
+$result3 = $mysqli->query($sql3);
+
 foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$event_id'") as $totals) {
     $total  = "". $totals['COUNT(*)'] ."";
 }
@@ -119,6 +125,13 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$eve
                                         <i class="material-icons">settings</i> INSTELLINGEN
                                     </a>
                                 </li>
+                                <?php if($category=="wedstrijd") : ?>
+                                <li role="presentation">
+                                    <a href="#doelpuntenmakers" data-toggle="tab">
+                                        <i class="material-icons">sports_soccer</i> Doelpuntenmakers
+                                    </a>
+                                </li>
+                                <?php endif; ?>
                             </ul>
 
                             <!-- Tab panes -->
@@ -245,6 +258,64 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$eve
                                         }
                                     ?>
                                 </div>
+                                <?php if($category=="wedstrijd") : ?>
+                                <div role="tabpanel" class="tab-pane fade" id="doelpuntenmakers">
+                                    <table class="event-table table table-bordered table-striped table-hover dataTable js-exportable">
+                                        <thead>
+                                            <tr>
+                                                <th>Naam</th>
+                                                <th>Aantal doelpunten</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php
+                                        if ($result3->num_rows > 0) {
+                                            while ($row = $result3->fetch_assoc()) {
+                                                $firstname = $row['firstname'];
+                                                $lastname = $row['lastname'];
+                                                $profile_photo = $row['profile_photo'];
+                                                $profile_photo_url = '/account/uploads/'. $row['profile_photo'];
+                                                $scorers_id = $row['scorers_id'];
+                                                $bookings_id = $row['bookings_id'];
+                                                $bookings_status = $row['bookings_status'];
+                                                $user_id = $row['user_id'];
+                                                $goals = $row['goals'];
+                                                if($bookings_status=="0") echo "<tr class='afgelast'>";
+                                                else if($bookings_status=="1") echo "<tr class=''>";
+                                                    if (isset($profile_photo)) { echo"
+                                                        <td><img src='$profile_photo_url' alt='$firstname $lastname' width='20' height='20' class='profile-photo-list'> $firstname $lastname</td>";
+                                                    }
+                                                    else {
+                                                        echo "<td>$firstname $lastname</td>";
+                                                    }
+                                                    if (isset($goals)) {
+                                                        echo"
+                                                        <form action='helpers/modify_scorers.php' method='post'>
+                                                            <input type='hidden' name='scorers_id' value='$scorers_id'>
+                                                            <input type='hidden' name='bookings_id' value='$bookings_id'>
+                                                            <input type='hidden' name='user_id' value='$user_id'>
+                                                            <input type='hidden' name='event_id' value='$event_id'>
+                                                            <td><input type='text' name='goals' value='$goals'> <input type='submit' class='btn btn-primary waves-effect' value='SET'></td>";
+                                                    }
+                                                    else {
+                                                        echo"
+                                                        <form action='helpers/create_scorers.php' method='post'>
+                                                            <input type='hidden' name='bookings_id' value='$bookings_id'>
+                                                            <input type='hidden' name='user_id' value='$user_id'>
+                                                            <input type='hidden' name='event_id' value='$event_id'>
+                                                            <td><input type='text' name='goals' value='0'> <input type='submit' class='btn btn-primary waves-effect' value='SET'></td>";
+                                                    }
+                                                    echo"</form>";
+                                                echo "</tr>";
+                                            }
+                                        } else {
+                                          echo "<td>Geen goals gevonden</td>";
+                                        }                                   
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
@@ -325,6 +396,7 @@ if(isset($_GET['playersConnected'])){
 if(isset($_GET['EmailUpdateSend'])){
     echo '<script>EmailUpdateSend();</script>';}
 ?>
+
 </body>
 
 </html>
