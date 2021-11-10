@@ -22,6 +22,10 @@ $sql = "SELECT * FROM event_bookings INNER JOIN events ON events.event_id=event_
 
 $result = $mysqli->query($sql);
 
+$sql2 = "SELECT *, SUM(event_scorers.goals) FROM event_scorers INNER JOIN users ON users.id=event_scorers.user_id GROUP BY users.firstname ORDER BY SUM(event_scorers.goals) DESC LIMIT 3";
+
+$result2 = $mysqli->query($sql2);
+
 foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$lasteventid' AND bookings_status='0'") as $totafmeldingen) {
     $afmeldingen  = "". $totafmeldingen['COUNT(*)'] ."";
 }
@@ -235,8 +239,7 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$las
                                                     echo "<td><a href='/account/event.php?event_id=$event_id'><i class='material-icons'>visibility</i></a>";
                                                 echo "</tr>";
                                                 }
-                                            } else {}                                   
-                                        $mysqli->close();
+                                            } else {}
                                         ?>
                                     </tbody>
                                 </table>
@@ -249,14 +252,71 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$las
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                     <div class="card">
                         <div class="header">
-                            <h2>SPONSORS</h2>
+                            <h2>TOP SCORERS</h2>
+                            <ul class="header-dropdown m-r--5">
+                                <li class="dropdown">
+                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="material-icons">more_vert</i>
+                                    </a>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li><a href="/account/top_scorers.php">Alle topscorers</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
                         <div class="body">
-                            <img class="img-responsive" src="/images/verhijko-logo.gif" alt="Verhijko BV" style="margin-bottom: 10px;">
-                            <img class="img-responsive" src="/images/mm-webdesign-logo.png" alt="M&M Webdesign">
+                            <div class="table-responsive">
+                                <table class="table table-hover dashboard-task-infos">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Naam</th>
+                                            <th>Aantal doelpunten</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php 
+                                        if ($result2->num_rows > 0) {
+                                            $ni = 0;
+                                            while ($row = $result2->fetch_assoc()) {;
+                                                $firstname = $row['firstname'];
+                                                $goals = $row['SUM(event_scorers.goals)'];
+                                                if($event_status=="0") echo "<tr class='afgelast'>";
+                                                else if($event_status=="1") echo "<tr class=''>";
+                                                    echo "<td>" . ++$ni . "</td>";
+                                                    echo "<td>$firstname</td>";
+                                                    echo "<td>$goals</td>";
+                                                    echo "<td>$total_played</td>";
+                                                echo "</tr>";
+                                                }
+                                            } else {}                                   
+                                        $mysqli->close();
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <!-- #END# Browser Usage -->
+            </div>
+            <div class="row clearfix">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>SPONSORS</h2>
+                        <div class="body">
+                            <div class="row clearfix">
+                                <div class="col-sm-2">
+                                    <img class="img-responsive" src="/images/verhijko-logo.gif" alt="Verhijko BV">
+                                </div>
+                                <div class="col-sm-2">
+                                    <img class="img-responsive" src="/images/mm-webdesign-logo.png" alt="M&M Webdesign">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
