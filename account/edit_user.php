@@ -23,6 +23,8 @@ $role = $row['role'];
 $finance = $row['finance'];
 $user_status = $row['user_status'];
 $player_type = $row['player_type'];
+$shirt_number = $row['shirt_number'];
+$jacket_number = $row['jacket_number'];
 
 ?>
 <!DOCTYPE html>
@@ -140,19 +142,6 @@ $player_type = $row['player_type'];
                                         </div>
                                     </div>
                                     <div class="col-md-3">
-                                        <b>Openstaand bedrag *</b>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <i class="material-icons">euro_symbol</i>
-                                            </span>
-                                            <div class="form-line">
-                                                <input type="text" name="finance" class="form-control" placeholder="Openstaand bedrag" value="<?php echo $finance; ?>" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row clearfix">
-                                    <div class="col-md-3">
                                         <b>Gebruikersnaam *</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
@@ -163,7 +152,9 @@ $player_type = $row['player_type'];
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-md-4">
                                         <b>Voornaam *</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
@@ -174,7 +165,7 @@ $player_type = $row['player_type'];
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <b>Achternaam *</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
@@ -185,7 +176,7 @@ $player_type = $row['player_type'];
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <b>Email *</b>
                                         <div class="input-group">
                                             <span class="input-group-addon">
@@ -193,6 +184,41 @@ $player_type = $row['player_type'];
                                             </span>
                                             <div class="form-line">
                                                 <input type="email" name="email"class="form-control" placeholder="Email" value="<?php echo $email; ?>" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-md-4">
+                                        <b>Openstaand bedrag *</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">euro_symbol</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="finance" class="form-control" placeholder="Openstaand bedrag" value="<?php echo $finance; ?>" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>Shirt nummer *</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">numbers</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="shirt_number" class="form-control" placeholder="Shirt nummer" value="<?php echo $shirt_number; ?>" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <b>Jack nummer *</b>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="material-icons">numbers</i>
+                                            </span>
+                                            <div class="form-line">
+                                                <input type="text" name="jacket_number" class="form-control" placeholder="Jack nummer" value="<?php echo $jacket_number; ?>" required>
                                             </div>
                                         </div>
                                     </div>

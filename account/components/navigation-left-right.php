@@ -84,6 +84,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="/account/clothes_overview.php">
+                            <i class="material-icons">checkroom</i>
+                            <span>Kleding</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">email</i>
                             <span>Berichten</span>
