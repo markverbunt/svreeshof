@@ -26,6 +26,10 @@ $sql2 = "SELECT *, SUM(event_scorers.goals) FROM event_scorers INNER JOIN users 
 
 $result2 = $mysqli->query($sql2);
 
+$sql3 = "SELECT * FROM external_event_bookings INNER JOIN external_events ON external_events.external_event_id=external_event_bookings.external_event_id WHERE external_event_bookings.user_id='$id' AND external_events.external_event_date >= CURDATE() ORDER BY external_events.external_event_date ASC LIMIT 2";
+
+$result3 = $mysqli->query($sql3);
+
 foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$lasteventid' AND bookings_status='0'") as $totafmeldingen) {
     $afmeldingen  = "". $totafmeldingen['COUNT(*)'] ."";
 }
@@ -237,6 +241,67 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$las
                                                     if($bookings_status=="0") echo "<td><span class='label bg-red'>NEE</span></td>";
                                                     else if($bookings_status=="1") echo "<td><span class='label bg-green'>JA</span></td>";
                                                     echo "<td><a href='/account/event.php?event_id=$event_id'><i class='material-icons'>visibility</i></a>";
+                                                echo "</tr>";
+                                                }
+                                            } else {}
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="header">
+                            <h2>AANKOMENDE EVENEMENTEN</h2>
+                            <ul class="header-dropdown m-r--5">
+                                <li class="dropdown">
+                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        <i class="material-icons">more_vert</i>
+                                    </a>
+                                    <ul class="dropdown-menu pull-right">
+                                        <li><a href="/account/events_wedstrijd.php">Alle evenementen</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="body">
+                            <div class="table-responsive">
+                                <table class="table table-hover dashboard-task-infos">
+                                    <thead>
+                                        <tr>
+                                            <th>Status</th>
+                                            <th>Datum</th>
+                                            <th>Tijd</th>
+                                            <th>Categorie</th>
+                                            <th>Aanwezig</th>
+                                            <th>Partner?</th>
+                                            <th>Bekijk</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php 
+                                        if ($result3->num_rows > 0) {
+                                            while ($row = $result3->fetch_assoc()) {
+                                                $external_event_id = $row['external_event_id'];
+                                                $orgDate = $row['external_event_date'];
+                                                $external_event_time = $row['external_event_time'];
+                                                $external_event_date = date("d-m-Y", strtotime($orgDate));
+                                                $external_event_category = $row['external_event_category'];
+                                                $external_event_status = $row['external_event_status'];
+                                                $bookings_status = $row['bookings_status'];
+                                                $with_partner = $row['with_partner'];
+                                                if($external_event_status=="0") echo "<tr class='afgelast'>";
+                                                else if($external_event_status=="1") echo "<tr class=''>";
+                                                    if($external_event_status=="0") echo "<td><span class='label bg-red'>AFGELAST</span></td>";
+                                                    else if($event_status=="1") echo "<td><span class='label bg-green'>ACTIEF</soan></td>";
+                                                    echo "<td>$external_event_date</td>";
+                                                    echo "<td>$external_event_time</td>";
+                                                    echo "<td>$external_event_category</td>";
+                                                    if($bookings_status=="0") echo "<td><span class='label bg-red'>NEE</span></td>";
+                                                    else if($bookings_status=="1") echo "<td><span class='label bg-green'>JA</span></td>";
+                                                    if($with_partner=="0") echo "<td><span class='label bg-red'>NEE</span></td>";
+                                                    else if($with_partner=="1") echo "<td><span class='label bg-green'>JA</span></td>";
+                                                    echo "<td><a href='/account/external_event.php?external_event_id=$external_event_id'><i class='material-icons'>visibility</i></a>";
                                                 echo "</tr>";
                                                 }
                                             } else {}

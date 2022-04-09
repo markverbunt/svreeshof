@@ -29,6 +29,12 @@
                         </ul>
                     </li>
                     <li>
+                        <a href="/account/external_events.php">
+                            <i class="material-icons">event</i>
+                            <span>Evenement</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="/account/finance.php">
                             <i class="material-icons">euro</i>
                             <span>Sparen</span>
@@ -74,6 +80,20 @@
                             </li>
                             <li>
                                 <a href="/account/list_events.php">Wijzig wedstrijd / training</a>
+                            </li>
+                        </ul>
+                    </li>
+                     <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">event</i>
+                            <span>Evenement</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="/account/add_external_event.php">Voeg evenement toe</a>
+                            </li>
+                            <li>
+                                <a href="/account/list_external_events.php">Wijzig evenement</a>
                             </li>
                         </ul>
                     </li>

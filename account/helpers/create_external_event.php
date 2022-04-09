@@ -34,7 +34,7 @@ if ($stmt = $mysqli->query("INSERT INTO external_events (external_event_time, ex
 				}
 			}*/
 
-    		header("location: /account/list_events.php?eventSuccess");
+    		header("location: /account/list_external_events.php?eventSuccess");
 		}
 $mysqli->close();
 ?>

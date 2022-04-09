@@ -129,7 +129,7 @@ foreach($mysqli->query("SELECT COUNT(*) FROM external_event_bookings WHERE exter
                                     <input type='hidden' name='external_event_id' value="<?php echo $external_event_id; ?>">
                                     <input type='hidden' name='external_bookings_id' value="<?php echo $external_bookings_id; ?>">
                                     <?php
-                                        if($external_event_category=="feest" && strtotime($external_event_date) > strtotime('now+1day')) {
+                                        if(strtotime($external_event_date) > strtotime('now+1day')) {
                                             if(!$booking_block_true) {
                                                 if($bookings_status=="1" && $external_event_status=="1") {
                                                     echo "<input type='hidden' name='bookings_status' value='0'><button class='btn btn-danger waves-effect' type='submit' name='cancel'><i class='material-icons'>close</i><span>Ik wil me afmelden</span></button></form>";
@@ -139,15 +139,20 @@ foreach($mysqli->query("SELECT COUNT(*) FROM external_event_bookings WHERE exter
                                                                 <input type='hidden' name='user_id' value='$id'>
                                                                 <input type='hidden' name='external_event_id' value='$external_event_id'>
                                                                 <input type='hidden' name='external_bookings_id' value='$external_bookings_id'>
-                                                                <input type='hidden' name='bookings_status' value='$bookings_status'>
-                                                                <div class='switch m-t-5'>";
+                                                                <input type='hidden' name='bookings_status' value='$bookings_status'>";
                                                             if($with_partner=="1") {
-                                                                echo"<label>NEE<input type='checkbox' value='1' name='with_partner' checked><span class='lever switch-col-cyan'></span>JA</label>";
+                                                                echo"<div class='switch m-r-10' style='display: inline-block'>
+                                                                <p>Partner mee?</p>
+                                                                <label>NEE<input type='checkbox' value='1' name='with_partner' checked><span class='lever switch-col-cyan'></span>JA</label>
+                                                                </div>";
                                                             }
                                                             else if($with_partner=="0") {
-                                                            echo"<label>NEE<input type='checkbox' value='1' name='with_partner'><span class='lever switch-col-cyan'></span>JA</label>";
+                                                            echo"<div class='switch m-r-10' style='display: inline-block'>
+                                                            <p>Partner mee?</p>
+                                                            <label>NEE<input type='checkbox' value='1' name='with_partner'><span class='lever switch-col-cyan'></span>JA</label>
+                                                            </div>";
                                                             }
-                                                            echo"<button class='btn btn-primary btn-xs waves-effect m-l-10' type='submit' name='cancel'><span>OPSLAAN</span></button></div>
+                                                            echo"<button class='btn btn-primary btn-xs waves-effect' type='submit' name='cancel'><span>OPSLAAN</span></button>
                                                             </form>";
                                                         }
                                                     }
@@ -176,10 +181,6 @@ foreach($mysqli->query("SELECT COUNT(*) FROM external_event_bookings WHERE exter
                                             else {
                                                 echo "<span class='label bg-red'>Aan/afmelden niet mogelijk door betalingsachterstand</span>";
                                             }
-                                        }
-                                        else if($external_event_category=="zaalvoetbal" && strtotime($external_event_date) > strtotime('now-1day')) {
-                                            if($bookings_status=="1" && $external_event_status=="1") echo "<input type='hidden' name='bookings_status' value='0'><button class='btn btn-danger waves-effect' type='submit' name='cancel'><i class='material-icons'>close</i><span>Ik wil me afmelden</span></button></form>";
-                                            else if($bookings_status=="0"  && $external_event_status=="1") echo "<input type='hidden' name='bookings_status' value='1'><button class='btn btn-success waves-effect' type='submit' name='aanmelden'><i class='material-icons'>check</i><span>Ik wil me aanmelden</span></button></form>";
                                         }
                                     ?>
                             </div>

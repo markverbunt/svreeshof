@@ -218,7 +218,7 @@ foreach($mysqli->query("SELECT COUNT(*) FROM external_event_bookings WHERE exter
                                         echo "<h4>Koppel spelers</h4><p>Er zijn nog geen spelers gekoppeld. Dit betekent dat de spelers zich niet kunnen aan/afmelden. Klik op onderstaande knop om spelers te koppelen.</p>
                                     <form action='helpers/connect_external_players.php' method='post'>
                                         <input type='hidden' name='external_event_id' value='$external_event_id'>";
-                                        if($external_event_category=="feest") echo "<input type='hidden' name='bookings_status' value='1'>";
+                                        if($external_event_category=="feest") echo "<input type='hidden' name='bookings_status' value='0'>";
                                         if($external_event_category=="zaalvoetbal") echo "<input type='hidden' name='bookings_status' value='0'>";
                                         echo "<input type='submit' class='btn btn-primary m-t-15 waves-effect' value='Koppel spelers'>
                                     </form>";

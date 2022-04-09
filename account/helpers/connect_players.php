@@ -12,7 +12,7 @@ error_reporting(E_ALL);
 if ($mysqli->connect_errno) {
     echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 }
-$sql = "SELECT * FROM users";
+$sql = "SELECT * FROM users WHERE user_status = 1";
 $result = $mysqli->query($sql);
 if ($result->num_rows > 0) {
 	while ($row = $result->fetch_assoc()) {
