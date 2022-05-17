@@ -38,6 +38,10 @@ foreach($mysqli->query("SELECT COUNT(*) FROM external_event_bookings WHERE exter
     $aanmeldingen  = "". $totaanmeldingen['COUNT(*)'] ."";
 }
 
+foreach($mysqli->query("SELECT COUNT(*) FROM external_event_bookings WHERE external_event_id='$external_event_id' AND bookings_status='1' AND with_partner='1'") as $totaanmeldingenpartner) {
+    $aanmeldingenpartner  = "". $totaanmeldingenpartner['COUNT(*)'] ."";
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="nl-NL">
@@ -193,7 +197,7 @@ foreach($mysqli->query("SELECT COUNT(*) FROM external_event_bookings WHERE exter
                                 </li>
                                 <li role="presentation">
                                     <a href="#afmeldingen" data-toggle="tab">
-                                        <i class="material-icons">face</i> <?php if($external_event_category=="feest") {echo "AANMELDINGEN (". $aanmeldingen .")";} else {echo "AANMELDINGEN (". $aanmeldingen .")";} ?>
+                                        <i class="material-icons">face</i> <?php if($external_event_category=="feest") {echo "AANMELDINGEN (". $aanmeldingen ." + ". $aanmeldingenpartner ." partners)";} else {echo "AANMELDINGEN (". $aanmeldingen .")";} ?>
                                     </a>
                                 </li>
                             </ul>
