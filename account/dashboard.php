@@ -114,7 +114,7 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$las
                     </a>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <a href="/account/users_play.php" style="cursor: pointer; text-decoration: none;">
+                    <a href="/account/event.php?event_id=' . $lasteventid . '" style="cursor: pointer; text-decoration: none;">
                         <div class="info-box bg-orange hover-expand-effect">
                             <div class="icon">
                                 <i class="material-icons">person</i>
