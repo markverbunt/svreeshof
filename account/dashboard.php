@@ -14,10 +14,6 @@ foreach($mysqli->query("SELECT COUNT(*) FROM users WHERE user_status='1' AND pla
     $count_users_play  = "". $totalcount_users_play['COUNT(*)'] ."";
 }
 
-foreach($mysqli->query("SELECT COUNT(*) FROM users WHERE user_status='1' AND player_type='1'") as $totalcount_users_rest) {
-    $count_users_rest  = "". $totalcount_users_rest['COUNT(*)'] ."";
-}
-
 $sql = "SELECT * FROM event_bookings INNER JOIN events ON events.event_id=event_bookings.event_id WHERE event_bookings.user_id='$id' AND events.event_date >= CURDATE() ORDER BY events.event_date ASC LIMIT 2";
 
 $result = $mysqli->query($sql);
@@ -32,6 +28,9 @@ $result3 = $mysqli->query($sql3);
 
 foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$lasteventid' AND bookings_status='0'") as $totafmeldingen) {
     $afmeldingen  = "". $totafmeldingen['COUNT(*)'] ."";
+}
+foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$lasteventid' AND bookings_status='1'") as $totaanmeldingen) {
+    $aanmeldingen  = "". $totaanmeldingen['COUNT(*)'] ."";
 }
 ?>
 <!DOCTYPE html>
@@ -121,8 +120,8 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$las
                                 <i class="material-icons">person</i>
                             </div>
                             <div class="content">
-                                <div class="text">AANTAL SPELERS</div>
-                                <div class="number count-to" data-from="0" data-to="' . $count_users_play . '" data-speed="1000" data-fresh-interval="20">
+                                <div class="text">AANWEZIG DEZE WEEK</div>
+                                <div class="number count-to" data-from="0" data-to="' . $aanmeldingen . '" data-speed="1000" data-fresh-interval="20">
                                 </div>
                             </div>
                         </div>
@@ -135,8 +134,8 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$las
                                 <i class="material-icons">person</i>
                             </div>
                             <div class="content">
-                                <div class="text">AANTAL RUSTENDE LEDEN</div>
-                                <div class="number count-to" data-from="0" data-to="' . $count_users_rest . '" data-speed="1000" data-fresh-interval="20">
+                                <div class="text">TOTAAL AANTAL SPELERS</div>
+                                <div class="number count-to" data-from="0" data-to="' . $count_users_play . '" data-speed="1000" data-fresh-interval="20">
                                 </div>
                             </div>
                         </div>

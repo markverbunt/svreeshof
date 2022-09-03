@@ -12,7 +12,7 @@ error_reporting(E_ALL);
 if ($mysqli->connect_errno) {
     echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 }
-$sql = "SELECT * FROM users WHERE user_status = 1";
+$sql = "SELECT * FROM users WHERE user_status = 1 AND player_type = 0";
 $result = $mysqli->query($sql);
 if ($result->num_rows > 0) {
 	while ($row = $result->fetch_assoc()) {
@@ -25,6 +25,20 @@ if ($result->num_rows > 0) {
 		}
 	}
 }
+$sql2 = "SELECT * FROM users WHERE user_status = 1 AND player_type = 1";
+$result2 = $mysqli->query($sql2);
+if ($result2->num_rows > 0) {
+	while ($row2 = $result2->fetch_assoc()) {
+		$id2=$row2['id'];
+		$values2= array('id' => $id2 );
+		$all_users2 = implode($values2);
+		
+		if ($stmt2 = $mysqli->query("INSERT INTO event_bookings (user_id, event_id, bookings_status) VALUES ('$all_users2', '$event_id', 0 )")) {
+		header("location: /account/edit_event.php?event_id=$event_id&playersConnected");
+		}
+	}
+}
 mysqli_stmt_close($stmt);
+mysqli_stmt_close($stmt2);
 $mysqli->close();
 ?>
