@@ -2,6 +2,7 @@
 require('helpers/session.php');
 require_once('helpers/global_vars.php');
 require('helpers/check_admin.php');
+require('helpers/check_finance.php');
 
 $sql = "SELECT * FROM users ORDER BY finance DESC";
 $result = $mysqli->query($sql);
@@ -218,7 +219,7 @@ foreach($mysqli->query("SELECT SUM(finance) FROM users") as $TotalPaidFinance) {
                     value: <?php echo $TotalPaid;?>
                 }, {
                     label: 'Betaald',
-                    value: <?php echo 1510-$TotalPaid;?>
+                    value: <?php echo 0-$TotalPaid;?>
                 }],
                 colors: ['rgb(244, 67, 53)', 'rgb(76, 175, 80)'],
                 formatter: function (y) {

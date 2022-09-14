@@ -1,9 +1,8 @@
 <?php
 require('helpers/session.php');
 require_once('helpers/global_vars.php');
-require('helpers/check_admin.php');
 
-$sql = "SELECT * FROM users";
+$sql = "SELECT *, SUM(event_scorers.goals) FROM event_scorers INNER JOIN users ON users.id=event_scorers.user_id GROUP BY users.id ORDER BY SUM(event_scorers.goals) DESC";
 $result = $mysqli->query($sql);
 ?>
 <!DOCTYPE html>
@@ -13,7 +12,7 @@ $result = $mysqli->query($sql);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Sv Reeshof Bierteam - Gebruikers</title>
+    <title>Sv Reeshof Bierteam - Top Scorers</title>
     <!-- Favicon-->
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
@@ -73,60 +72,38 @@ $result = $mysqli->query($sql);
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Gebruikers
-                                <small>Klik op het potlood om de gebruiker te wijzigen</small>
+                                Top Scorers
+                                <small>Totaal overzicht van alle doelpunten</small>
                             </h2>
                         </div>
                         <div class="body table-responsive">
                             <table class="user-table table table-bordered table-striped table-hover dataTable js-exportable">
                                 <thead>
                                     <tr>
+                                        <th>#</th>
                                         <th>Voornaam</th>
                                         <th>Achternaam</th>
-                                        <th>Gebruikersnaam</th>
-                                        <th>Email</th>
-                                        <th>Openstaand bedrag</th>
-                                        <th>Email updates</th>
-                                        <th>Type</th>
-                                        <th>Rol</th>
-                                        <th>Status</th>
-                                        <th></th>
+                                        <th>Aantal doelpunten</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 <?php
                                 if ($result->num_rows > 0) {
+                                    $ni = 0;
                                     while ($row = $result->fetch_assoc()) {
                                         $id = $row['id'];
-                                        $username = $row['username'];
                                         $firstname = $row['firstname'];
                                         $lastname = $row['lastname'];
-                                        $email = $row['email'];
-                                        $player_type = $row['player_type'];
-                                        $role = $row['role'];
-                                        $finance = $row['finance'];
-                                        $email_updates = $row['email_updates'];
-                                        $user_status = $row['user_status'];
+                                        $goals = $row['SUM(event_scorers.goals)'];
                                         echo "<tr>";
+                                            echo "<td>" . ++$ni . "</td>";
                                             echo "<td>$firstname</td>";
                                             echo "<td>$lastname</td>";
-                                            echo "<td>$username</td>";
-                                            echo "<td><a href='mailto:$email'>$email</a></td>";
-                                            echo "<td>&euro; $finance</td>";
-                                            if($email_updates=="0") echo "<td><span class='label bg-red'>UIT</span></td>";
-                                            else if($email_updates=="1") echo "<td><span class='label bg-green'>AAN</span></td>";
-                                            if($player_type=="0") echo "<td>Speler</td>";
-                                            else if($player_type=="1") echo "<td>Rustend lid</td>";
-                                            if($role=="0") echo "<td>Gebruiker</td>";
-                                            else if($role=="1") echo "<td>Administrator</td>";
-                                            else if($role=="2") echo "<td>Beheerder</td>";
-                                            if($user_status=="0") echo "<td><span class='label bg-red'>INACTIEF</span></td>";
-                                            else if($user_status=="1") echo "<td><span class='label bg-green'>ACTIEF</span></td>";
-                                            echo "<td><a href='/account/edit_user.php?id=$id'><i class='material-icons'>create</i></a></td>";
+                                            echo "<td>$goals</td>";
                                         echo "</tr>";
                                     }
                                 } else {
-                                  echo "Geen gebruikers gevonden";
+                                  echo "Geen doelpunten gevonden";
                                 }                                   
                                     $mysqli->close();
                                     ?>

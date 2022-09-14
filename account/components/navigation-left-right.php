@@ -41,6 +41,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="/account/top_scorers.php">
+                            <i class="material-icons">sports_soccer</i>
+                            <span>Top Scorers</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="/account/messages.php">
                             <i class="material-icons">email</i>
                             <span>Berichtenbox</span>

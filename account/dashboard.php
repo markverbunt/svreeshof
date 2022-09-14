@@ -18,7 +18,7 @@ $sql = "SELECT * FROM event_bookings INNER JOIN events ON events.event_id=event_
 
 $result = $mysqli->query($sql);
 
-$sql2 = "SELECT *, SUM(event_scorers.goals) FROM event_scorers INNER JOIN users ON users.id=event_scorers.user_id GROUP BY users.firstname ORDER BY SUM(event_scorers.goals) DESC LIMIT 3";
+$sql2 = "SELECT *, SUM(event_scorers.goals) FROM event_scorers INNER JOIN users ON users.id=event_scorers.user_id GROUP BY users.id ORDER BY SUM(event_scorers.goals) DESC LIMIT 3";
 
 $result2 = $mysqli->query($sql2);
 
@@ -344,13 +344,12 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$las
                                             $ni = 0;
                                             while ($row = $result2->fetch_assoc()) {;
                                                 $firstname = $row['firstname'];
+                                                $lastname = $row['lastname'];
                                                 $goals = $row['SUM(event_scorers.goals)'];
-                                                if($event_status=="0") echo "<tr class='afgelast'>";
-                                                else if($event_status=="1") echo "<tr class=''>";
+                                                echo "<tr>";
                                                     echo "<td>" . ++$ni . "</td>";
-                                                    echo "<td>$firstname</td>";
+                                                    echo "<td>$firstname $lastname</td>";
                                                     echo "<td>$goals</td>";
-                                                    echo "<td>$total_played</td>";
                                                 echo "</tr>";
                                                 }
                                             } else {}                                   

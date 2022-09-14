@@ -125,7 +125,8 @@ $jacket_number = $row['jacket_number'];
                                             </span>
                                             <select class="form-control show-tick" name="role" required>
                                                 <option value="0" <?php if($role=="0") echo "selected"; ?>>Gebruiker</option>
-                                                <option value="1" <?php if($role=="1") echo "selected"; ?>>Beheerder</option>
+                                                <option value="1" <?php if($role=="1") echo "selected"; ?>>Administrator</option>
+                                                <option value="1" <?php if($role=="2") echo "selected"; ?>>Beheerder</option>
                                             </select>
                                         </div>
                                     </div>
