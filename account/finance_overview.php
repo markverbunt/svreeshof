@@ -219,7 +219,7 @@ foreach($mysqli->query("SELECT SUM(finance) FROM users") as $TotalPaidFinance) {
                     value: <?php echo $TotalPaid;?>
                 }, {
                     label: 'Betaald',
-                    value: <?php echo 0-$TotalPaid;?>
+                    value: <?php echo 1900-$TotalPaid;?>
                 }],
                 colors: ['rgb(244, 67, 53)', 'rgb(76, 175, 80)'],
                 formatter: function (y) {

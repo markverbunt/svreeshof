@@ -77,7 +77,7 @@ require_once('helpers/global_vars.php');
                             <ul>
                                 <li>De QR code te scannen of;</li>
                                 <li>Op de QR of link te klikken of;</li>
-                                <li>Door het over te maken naar <strong>NL50 RABO 0358 5011 64</strong> t.n.v <strong>M. Platvoet voetbal</strong> onder vermelding van <strong>Sparen Sv Reeshof 7</strong></li>
+                                <li>Door het over te maken naar <strong>NL50 RABO 0358 5011 64</strong> t.n.v <strong>M. Platvoet voetbal</strong> onder vermelding van <strong>Sparen Sv Reeshof 6</strong></li>
                             </ul>
                         </div>
                     </div>

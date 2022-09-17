@@ -106,8 +106,8 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$las
                                 <i class="material-icons">person</i>
                             </div>
                             <div class="content">
-                                <div class="text">AFMELDINGEN DEZE WEEK</div>
-                                <div class="number count-to" data-from="0" data-to="' . $afmeldingen . '" data-speed="1000" data-fresh-interval="20">
+                                <div class="text">AANWEZIG DEZE WEEK</div>
+                                <div class="number count-to" data-from="0" data-to="' . $aanmeldingen . '" data-speed="1000" data-fresh-interval="20">
                                 </div>
                             </div>
                         </div>
@@ -120,15 +120,15 @@ foreach($mysqli->query("SELECT COUNT(*) FROM event_bookings WHERE event_id='$las
                                 <i class="material-icons">person</i>
                             </div>
                             <div class="content">
-                                <div class="text">AANWEZIG DEZE WEEK</div>
-                                <div class="number count-to" data-from="0" data-to="' . $aanmeldingen . '" data-speed="1000" data-fresh-interval="20">
+                                <div class="text">AFMELDINGEN DEZE WEEK</div>
+                                <div class="number count-to" data-from="0" data-to="' . $afmeldingen . '" data-speed="1000" data-fresh-interval="20">
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                    <a href="/account/users_rest.php" style="cursor: pointer; text-decoration: none;">
+                    <a href="/account/users_play.php" style="cursor: pointer; text-decoration: none;">
                         <div class="info-box bg-orange hover-expand-effect">
                             <div class="icon">
                                 <i class="material-icons">person</i>
