@@ -90,8 +90,8 @@ require_once('helpers/global_vars.php');
                             <h2>Betaal direct</h2>
                         </div>
                         <div class="body">
-                            <a href="https://betaalverzoek.rabobank.nl/betaalverzoek/?id=iR33NJWFRpufUQs845ewsQ" target="_blank"><img class="img-responsive" src="/images/QR-code.png" alt="QR code"></a>
-                            <p style="text-align:center;"><a href="https://betaalverzoek.rabobank.nl/betaalverzoek/?id=iR33NJWFRpufUQs845ewsQ" target="_blank">Betaal hier direct</a></p>
+                            <a href="https://betaalverzoek.rabobank.nl/betaalverzoek/?id=iR33NJWFRpufUQs845ewsQ" target="_blank"><img class="img-responsive" src="/images/QR-code-2022.png" alt="QR code"></a>
+                            <p style="text-align:center;"><a href="https://betaalverzoek.rabobank.nl/betaalverzoek/?id=rqSVITO8Rh2J3CvWQ8UWDQ" target="_blank">Betaal hier direct</a></p>
                         </div>
                     </div>
                 </div>
